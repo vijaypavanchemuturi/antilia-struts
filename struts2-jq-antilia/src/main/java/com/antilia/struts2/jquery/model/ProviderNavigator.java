@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
@@ -35,7 +36,9 @@ public  class ProviderNavigator<B> implements Serializable {
 	 * @param request
 	 * @return
 	 */
-	public void getXml(HttpServletRequest request, PrintWriter writer) {
+	public void getXml(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/xml"); 
+		PrintWriter writer = response.getWriter();
 		int rows = getNumberOfRows(request);
 		int page = getCurrentPage(request);
 		int records = totalRecords();
@@ -70,6 +73,7 @@ public  class ProviderNavigator<B> implements Serializable {
 		    row++;
 		}		
 		writer.println("</rows>");
+		writer.flush();
 	}
 	
 	protected String createCellContent(int row, int column, String propertyPath, B bean) {
