@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/struts2-dojo-plugin-2.1.6.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/struts2-jq-antilia.1.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/struts2-jquery-plugin.1.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jetty-6.1.15.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jetty-management-6.1.15.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jetty-util-6.1.15.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jsp-2.1-jetty-6.1.15.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/servlet-api-2.5-20081211.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/struts2-core-2.1.6.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xwork-2.1.2.jar"/>
+	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
+</classpath>
