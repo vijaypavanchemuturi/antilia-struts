@@ -56,7 +56,7 @@
 		</target>
 	
 		<target name="CopyJar" depends="CreateJar">
-			<copyfile dest="../es.paneuropeo.struts2/src/main/webapp/WEB-INF/lib/${deploy.file}.jar" src="${deploy.path}/${deploy.file}.jar"/>		
+			<copyfile dest="../struts2-jq-antilia-test/src/main/webapp/WEB-INF/lib/${deploy.file}.jar" src="${deploy.path}/${deploy.file}.jar"/>		
 		</target>
 		<target name="CreateSrc" description="SRC-File erzeugen">
 			<mkdir dir="${src.dir}" />
