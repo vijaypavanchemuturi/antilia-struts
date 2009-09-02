@@ -22,9 +22,6 @@ import com.opensymphony.xwork2.ActionContext;
  * <p>
  * Action to test JQuery functionality.
  * </p>
- * <p>
- * 	<a href="http://code.google.com/p/struts2-jquery/">See Home page of struts2-jquery plugin</a>
- * </p>
  * 
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
@@ -73,11 +70,7 @@ public class JQueryGridAction extends ExampleSupport {
 	public String xmlData() throws Exception {
 		innitModel();
 		ProviderNavigator<Persona> navigator = new ProviderNavigator<Persona>(MockPersonasProvider.getInstance(), gridModel);				
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/xml"); 
-		PrintWriter out = response.getWriter();
-		navigator.getXml(ServletActionContext.getRequest(), out);
-		out.flush();
+		navigator.getXml(ServletActionContext.getRequest(), ServletActionContext.getResponse());		
 		return null;
 	}
 	
