@@ -3,17 +3,23 @@
  */
 package com.antilia.struts2.jquery.model;
 
+import java.io.Serializable;
 import java.util.List;
+
+import com.antilia.common.query.IQuery;
+import com.antilia.common.util.QueryUtils;
 
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
  */
-public class ListDataProvider<B> implements IDataProvider<B> {
+public class ListDataProvider<B extends Serializable> implements IDataProvider<B> {
 
 	private static final long serialVersionUID = 1L;
 	
 	private List<B> list;
+	
+	private List<B> tempList;
 	
 	public ListDataProvider(List<B> list) {
 		if (list == null)
@@ -24,17 +30,32 @@ public class ListDataProvider<B> implements IDataProvider<B> {
 	}
 	
 	
-	public Iterable<? extends B> getData(int first, int count) {
-		int toIndex = first + count;
-		if (toIndex > list.size())
-		{
-			toIndex = list.size();
+	public Iterable<? extends B> getData(IQuery<B> query) {
+		if(tempList == null) {
+			doQuery(query);
 		}
-		return list.subList(first, toIndex);
+		int toIndex = query.getFirstResult() + query.getMaxResults();
+		if (toIndex > tempList.size())
+		{
+			toIndex = tempList.size();
+		}
+		return tempList.subList(query.getFirstResult(), toIndex);
+	}
+	
+	private void doQuery(IQuery<B> query) {		
+		tempList = QueryUtils.sortList(list, query);
 	}
 	
 	
-	public int getSize() {
-		return list.size();
+	public int getSize(IQuery<B> query) {
+		if(tempList == null) {
+			doQuery(query);
+		}
+		return tempList.size();
+	}
+	
+	@Override
+	public void detach() {
+		tempList = null;
 	}
 }
