@@ -15,6 +15,7 @@ import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
 import com.antilia.struts2.jquery.model.IGridCellRenderer;
 import com.antilia.struts2.jquery.model.ProviderNavigator;
+import com.antilia.struts2.jquery.model.SortOrder;
 import com.antilia.struts2.jquery.model.GridColumnModel.Alignment;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -49,6 +50,7 @@ public class JQueryGridAction extends ExampleSupport {
 	private void innitModel() {
 		gridModel = new GridModel<Person>(Person.class);
 		gridModel.setCaption("Persons");
+		gridModel.setSortOrder(SortOrder.desc);
 		GridColumnModel<Person> columnModel = new GridColumnModel<Person>("name", 100);
         columnModel.setInitialSort(true);
         columnModel.setCellRenderer(new IGridCellRenderer<Person>() {
