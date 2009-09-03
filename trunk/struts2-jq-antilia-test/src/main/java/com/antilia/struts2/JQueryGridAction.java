@@ -84,7 +84,7 @@ public class JQueryGridAction extends ExampleSupport {
 	public String xmlData() throws Exception {
 		innitModel();
 		ProviderNavigator<Person> navigator = new ProviderNavigator<Person>(MockPersonsProvider.getInstance(), gridModel);				
-		navigator.renderData();		
+		navigator.renderData();	
 		return null;
 	}
 	

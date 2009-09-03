@@ -12,7 +12,7 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jsp-2.1-jetty-6.1.15.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/servlet-api-2.5-20081211.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/struts2-core-2.1.6.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xwork-2.1.2.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xwork-2.1.2.jar" sourcepath="src/main/webapp/WEB-INF/lib/src/xwork-2.1.2-sources.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/antilia-common-1.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/struts2-jq-antilia"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
