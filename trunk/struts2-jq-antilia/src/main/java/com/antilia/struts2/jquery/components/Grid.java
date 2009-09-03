@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.StrutsException;
 import org.apache.struts2.components.UIBean;
+import org.apache.struts2.util.TextProviderHelper;
 import org.apache.struts2.views.annotations.StrutsTag;
 import org.apache.struts2.views.annotations.StrutsTagSkipInheritance;
 
@@ -158,7 +159,8 @@ public class Grid extends UIBean {
 	  sb.append("\",");	  
 	  sb.append("caption: \"");
 	  //TODO: get it for resource and use caption as key.
-	  sb.append(gridModel.getCaption());
+	  String caption = TextProviderHelper.getText(gridModel.getCaption(), gridModel.getCaption(), stack);
+	  sb.append(caption);
 	  sb.append("\"");
 	  sb.append("});");
 	  sb.append("});");
