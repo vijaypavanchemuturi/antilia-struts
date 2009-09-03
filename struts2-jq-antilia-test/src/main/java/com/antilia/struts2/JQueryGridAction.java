@@ -15,6 +15,7 @@ import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
 import com.antilia.struts2.jquery.model.IGridCellRenderer;
 import com.antilia.struts2.jquery.model.ProviderNavigator;
+import com.antilia.struts2.jquery.model.GridColumnModel.Alignment;
 import com.opensymphony.xwork2.ActionContext;
 
 
@@ -66,9 +67,12 @@ public class JQueryGridAction extends ExampleSupport {
         gridModel.addColumnModel(columnModel);
         
         columnModel = new GridColumnModel<Person>("address", 200);
+        columnModel.setSortable(false);
+        columnModel.setAlignment(Alignment.CENTER);
         gridModel.addColumnModel(columnModel);
         
         columnModel = new GridColumnModel<Person>("phoneNumber", 100);
+        columnModel.setAlignment(Alignment.RIGHT);
         gridModel.addColumnModel(columnModel);
         
         
@@ -78,7 +82,7 @@ public class JQueryGridAction extends ExampleSupport {
 	public String xmlData() throws Exception {
 		innitModel();
 		ProviderNavigator<Person> navigator = new ProviderNavigator<Person>(MockPersonsProvider.getInstance(), gridModel);				
-		navigator.getXml(ServletActionContext.getRequest(), ServletActionContext.getResponse());		
+		navigator.renderData();		
 		return null;
 	}
 	

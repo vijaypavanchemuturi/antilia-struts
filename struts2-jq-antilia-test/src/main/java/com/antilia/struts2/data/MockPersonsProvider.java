@@ -6,6 +6,7 @@ package com.antilia.struts2.data;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import com.antilia.struts2.jquery.model.ListDataProvider;
 
@@ -20,6 +21,8 @@ public class MockPersonsProvider extends ListDataProvider<Person> {
 	 */
 	private static final long serialVersionUID = 1L;
 
+
+	private static final Random random = new Random();
 	
 	private static MockPersonsProvider instance;
 	
@@ -75,11 +78,11 @@ public class MockPersonsProvider extends ListDataProvider<Person> {
 				persona.setSex(Sex.M);
 				persona.setPostalCode("DFFD-211");
 				persona.setTown("Frankfurt Main");
-				persona.setProfesion("Zapatero");
+				persona.setProfesion("Shoe Maker");
 				persona.setEmail(name+"."+lastName+"@web.com");
-				persona.setNationality("Alemana");
-				persona.setBirthPlace("Alemania");
-				persona.setPhoneNumber("131323111");
+				persona.setNationality("German");
+				persona.setBirthPlace("Germany");
+				persona.setPhoneNumber(getRandomPhone());
 				clientes.add(persona);
 				
 			}
@@ -98,16 +101,24 @@ public class MockPersonsProvider extends ListDataProvider<Person> {
 				persona.setSex(Sex.M);
 				persona.setPostalCode("DFFD-211");									
 				persona.setTown("Frankfurt Main");
-				persona.setProfesion("Zapatero");
+				persona.setProfesion("Shoe Maker");
 				persona.setEmail(name+"."+lastName+"@web.com");
-				persona.setNationality("Alemana");
-				persona.setBirthPlace("Alemania");
-				persona.setPhoneNumber("131323111");
+				persona.setNationality("German");
+				persona.setBirthPlace("Germany");
+				persona.setPhoneNumber(getRandomPhone());
 				clientes.add(persona);
 				
 			}
 		}
 		return clientes;
+	}
+	
+	public static String getRandomPhone() {
+		StringBuffer sb = new StringBuffer();		
+		for(int i=0;i<8;i++) {			
+			sb.append(random.nextInt(10));
+		}
+		return sb.toString();
 	}
 	
 	public MockPersonsProvider() {
