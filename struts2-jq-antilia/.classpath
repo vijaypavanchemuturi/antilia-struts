@@ -7,7 +7,7 @@
 	<classpathentry kind="lib" path="lib/servlet-api-2.5-20081211.jar"/>
 	<classpathentry kind="lib" path="lib/struts2-core-2.1.6.jar" sourcepath="lib/src/struts2-core-2.1.6-sources.jar"/>
 	<classpathentry kind="lib" path="lib/velocity-1.5.jar"/>
-	<classpathentry kind="lib" path="lib/xwork-2.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/xwork-2.1.2.jar" sourcepath="lib/src/xwork-2.1.2-sources.jar"/>
 	<classpathentry kind="lib" path="lib/antilia-common-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
