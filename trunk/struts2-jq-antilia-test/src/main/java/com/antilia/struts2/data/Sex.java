@@ -8,7 +8,7 @@ package com.antilia.struts2.data;
  * 
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  */
-public enum Sexo {
+public enum Sex {
 	// Hombre, Male, Mann
 	H,
 	// Mujer, Female, Frau

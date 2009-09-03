@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.antilia.struts2.data.MockPersonasProvider;
-import com.antilia.struts2.data.Persona;
+import com.antilia.struts2.data.MockPersonsProvider;
+import com.antilia.struts2.data.Person;
 import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
 import com.antilia.struts2.jquery.model.IGridCellRenderer;
@@ -31,7 +31,7 @@ public class JQueryGridAction extends ExampleSupport {
     private static final long serialVersionUID = 1L;
 
 	
-	private GridModel<Persona>  gridModel;
+	private GridModel<Person>  gridModel;
   
      
 	public String execute() throws Exception {    	   
@@ -46,30 +46,38 @@ public class JQueryGridAction extends ExampleSupport {
     }
 	
 	private void innitModel() {
-		gridModel = new GridModel<Persona>(Persona.class);
-		gridModel.setCaption("Personas");
-		GridColumnModel<Persona> columnModel = new GridColumnModel<Persona>("nombre", 100);
+		gridModel = new GridModel<Person>(Person.class);
+		gridModel.setCaption("Persons");
+		GridColumnModel<Person> columnModel = new GridColumnModel<Person>("name", 100);
         columnModel.setInitialSort(true);
-        columnModel.setCellRenderer(new IGridCellRenderer<Persona>() {
+        columnModel.setCellRenderer(new IGridCellRenderer<Person>() {
         	private static final long serialVersionUID = 1L;
 
-			public String renderCell(Persona bean, String propertyPath, int column, int row) {
-        		return "<span style=\"color: red;\">"+bean.getNombre()+"</span>";
+			public String renderCell(Person bean, String propertyPath, int column, int row) {
+        		return "<span style=\"color: red;\">"+bean.getName()+"</span>";
         	}
         });
         gridModel.addColumnModel(columnModel);
         
-        columnModel = new GridColumnModel<Persona>("apellidos", 100);
+        columnModel = new GridColumnModel<Person>("lastnames", 100);
         gridModel.addColumnModel(columnModel);
         
-        columnModel = new GridColumnModel<Persona>("email", 200);
+        columnModel = new GridColumnModel<Person>("email", 200);
         gridModel.addColumnModel(columnModel);
+        
+        columnModel = new GridColumnModel<Person>("address", 200);
+        gridModel.addColumnModel(columnModel);
+        
+        columnModel = new GridColumnModel<Person>("phoneNumber", 100);
+        gridModel.addColumnModel(columnModel);
+        
+        
 	}
        
 	
 	public String xmlData() throws Exception {
 		innitModel();
-		ProviderNavigator<Persona> navigator = new ProviderNavigator<Persona>(MockPersonasProvider.getInstance(), gridModel);				
+		ProviderNavigator<Person> navigator = new ProviderNavigator<Person>(MockPersonsProvider.getInstance(), gridModel);				
 		navigator.getXml(ServletActionContext.getRequest(), ServletActionContext.getResponse());		
 		return null;
 	}
@@ -159,7 +167,7 @@ public class JQueryGridAction extends ExampleSupport {
 	/**
 	 * @return the gridModel
 	 */
-	public GridModel<Persona> getGridModel() {
+	public GridModel<Person> getGridModel() {
 		return gridModel;
 	}
 
@@ -167,7 +175,7 @@ public class JQueryGridAction extends ExampleSupport {
 	/**
 	 * @param gridModel the gridModel to set
 	 */
-	public void setGridModel(GridModel<Persona> gridModel) {
+	public void setGridModel(GridModel<Person> gridModel) {
 		this.gridModel = gridModel;
 	}
 }
