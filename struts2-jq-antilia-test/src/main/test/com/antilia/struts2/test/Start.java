@@ -5,6 +5,8 @@ import org.mortbay.jetty.Server;
 import org.mortbay.jetty.bio.SocketConnector;
 import org.mortbay.jetty.webapp.WebAppContext;
 
+import com.antilia.struts2.db.StartDerbyActivator;
+
 public class Start {
 
 	public static void main(String[] args) throws Exception {
@@ -34,11 +36,14 @@ public class Start {
 		try {
 			System.out.println(">>> STARTING EMBEDDED JETTY SERVER, PRESS ANY KEY TO STOP");
 			server.start();
+			StartDerbyActivator activator = new StartDerbyActivator();
+			activator.start();
 			System.in.read();
 			System.out.println(">>> STOPPING EMBEDDED JETTY SERVER"); 
             // while (System.in.available() == 0) {
 			//   Thread.sleep(5000);
 			// }
+			activator.stop();
 			server.stop();
 			server.join();
 		} catch (Exception e) {
