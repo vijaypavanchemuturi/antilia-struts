@@ -5,6 +5,8 @@ package com.antilia.struts2.jquery.model;
 
 import java.io.Serializable;
 
+import com.antilia.common.util.StringUtils;
+
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
@@ -27,6 +29,12 @@ public class GridColumnModel<B extends Serializable> {
 	 *  If the column is sortable
 	 */
 	private boolean sortable = true;
+	
+	
+	/**
+	 * The key to be used by the tag to get columnName
+	 */
+	private String name;
 	
 	
 	
@@ -153,6 +161,23 @@ public class GridColumnModel<B extends Serializable> {
 	 */
 	public void setInitialSort(boolean initialSort) {
 		this.initialSort = initialSort;
+	}
+
+	/**
+	 * If name is not empty returns name. Otherwise will return: BeanName.propertyPath
+	 * @return the name
+	 */
+	public String getName() {
+		if(StringUtils.isEmpty(name))
+			return getGridModel().getBeanClass().getSimpleName() + "." + getPropertyPath();
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

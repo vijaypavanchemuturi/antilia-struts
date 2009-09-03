@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.antilia.common.util.StringUtils;
+
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
@@ -149,6 +151,9 @@ public class GridModel<B extends Serializable> implements Serializable {
 	 * @return the caption
 	 */
 	public String getCaption() {
+		if(StringUtils.isEmpty(caption)) {
+			return this.beanClass.getSimpleName();
+		}
 		return caption;
 	}
 

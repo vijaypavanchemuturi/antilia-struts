@@ -98,7 +98,8 @@ public class Grid extends UIBean {
 	  for(GridColumnModel<?> columnModel: gridModel.getColumnModels()) {
 		  sb.append("'");
 		  //TODO: get some message for a resource bundle.
-		  sb.append(columnModel.getPropertyPath());
+		  String name = TextProviderHelper.getText(columnModel.getName(), columnModel.getPropertyPath(), stack);
+		  sb.append(name);
 		  sb.append("',");
 	  }	  	
 	  sb.append("],");
@@ -112,8 +113,8 @@ public class Grid extends UIBean {
 	  sb.append("colModel:[");
 	  for(GridColumnModel<?> columnModel: gridModel.getColumnModels()) {
 		  sb.append("{");
-		  sb.append("name:'");
-		  sb.append(columnModel.getPropertyPath());
+		  sb.append("name:'");		 
+		  sb.append(columnModel.getPropertyPath());		  
 		  sb.append("',index:'");
 		  sb.append(columnModel.getPropertyPath());
 		  sb.append("', width:");
