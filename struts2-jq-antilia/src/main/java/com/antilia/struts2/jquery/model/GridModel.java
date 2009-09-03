@@ -20,6 +20,7 @@ public class GridModel<B> implements Serializable {
 	 * The bean class.
 	 */
 	private Class<? extends B> beanClass;
+		
 	
 	/**
 	 * The column models.
@@ -38,6 +39,22 @@ public class GridModel<B> implements Serializable {
 	 */
 	private String caption;
 	
+	
+	/**
+	 * Transfer protocol used to communicate with action.
+	 * 
+	 * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
+	 *
+	 */
+	public static enum TransferProtocol {
+		xml,
+		json
+	}
+	
+	/**
+	 * Flag used to set the transfer protocol used to communicate with the server.
+	 */
+	private TransferProtocol transferProtocol = TransferProtocol.xml;
 	
 	/**
 	 * 
@@ -134,5 +151,19 @@ public class GridModel<B> implements Serializable {
 	 */
 	public void setCaption(String caption) {
 		this.caption = caption;
+	}
+
+	/**
+	 * @return the transferProtocol
+	 */
+	public TransferProtocol getTransferProtocol() {
+		return transferProtocol;
+	}
+
+	/**
+	 * @param transferProtocol the transferProtocol to set
+	 */
+	public void setTransferProtocol(TransferProtocol transferProtocol) {
+		this.transferProtocol = transferProtocol;
 	}
 }
