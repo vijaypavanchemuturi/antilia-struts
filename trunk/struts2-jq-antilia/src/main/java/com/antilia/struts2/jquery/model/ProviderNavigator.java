@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.antilia.struts2.jquery.utils.ReflectionUtils;
+
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
@@ -76,8 +78,13 @@ public  class ProviderNavigator<B> implements Serializable {
 		writer.flush();
 	}
 	
-	protected String createCellContent(int row, int column, String propertyPath, B bean) {
-		return propertyPath+"_"+column;
+	protected String createCellContent(int row, int column, String propertyPath, B bean) throws NoSuchFieldException {
+		//return propertyPath+"_"+column;
+		Object object = ReflectionUtils.getPropertyValue(bean, propertyPath);
+		if(object != null) {
+			return object.toString();
+		}
+		return "";
 	}	
 	
 	private Iterable<? extends B> getRows(int rows, int page) {
