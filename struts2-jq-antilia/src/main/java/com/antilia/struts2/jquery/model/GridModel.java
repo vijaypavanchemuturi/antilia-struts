@@ -17,12 +17,12 @@ public class GridModel<B> implements Serializable {
 	
 	
 	/**
-	 * 
+	 * The bean class.
 	 */
 	private Class<? extends B> beanClass;
 	
 	/**
-	 * 
+	 * The column models.
 	 */
 	private List<GridColumnModel<B>> columnModels = new ArrayList<GridColumnModel<B>>();	
 	
