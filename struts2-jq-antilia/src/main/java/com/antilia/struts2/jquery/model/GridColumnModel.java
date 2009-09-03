@@ -3,11 +3,13 @@
  */
 package com.antilia.struts2.jquery.model;
 
+import java.io.Serializable;
+
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
  */
-public class GridColumnModel<B> {
+public class GridColumnModel<B extends Serializable> {
 
 	private GridModel<B> gridModel;
 	

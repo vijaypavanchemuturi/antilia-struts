@@ -88,8 +88,9 @@ public class Grid extends UIBean {
 	  // adding ?nd='+new Date().getTime() prevent IE caching
 	  sb.append("url:'"+this.url+"?nd='+new Date().getTime(),");
 	  // datatype parameter defines the format of data returned from the server
-	  // in this case we use a JSON data
-	  sb.append("datatype: 'xml',");
+	  sb.append("datatype: '");
+	  sb.append(gridModel.getTransferProtocol().name());
+	  sb.append("',");
 	      // colNames parameter is a array in which we describe the names
 	      // in the columns. This is the text that apper in the head of the grid.
 	  sb.append("colNames:[");
@@ -152,7 +153,9 @@ public class Grid extends UIBean {
 	  sb.append(gridModel.isViewrecords());
 	  sb.append(",");
 	  //sets the sorting order. Default is asc. This parameter is added to the url
-	  sb.append("sortorder: \"desc\",");	  
+	  sb.append("sortorder: \"");
+	  sb.append(gridModel.getSortOrder().name());
+	  sb.append("\",");	  
 	  sb.append("caption: \"");
 	  //TODO: get it for resource and use caption as key.
 	  sb.append(gridModel.getCaption());

@@ -11,7 +11,7 @@ import java.util.List;
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
  */
-public class GridModel<B> implements Serializable {
+public class GridModel<B extends Serializable> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -19,7 +19,7 @@ public class GridModel<B> implements Serializable {
 	/**
 	 * The bean class.
 	 */
-	private Class<? extends B> beanClass;
+	private Class<B> beanClass;
 		
 	
 	/**
@@ -57,23 +57,29 @@ public class GridModel<B> implements Serializable {
 	private TransferProtocol transferProtocol = TransferProtocol.xml;
 	
 	/**
+	 * Sets the sorting order. Default is asc. This is the sorting order used to sort the
+	 * initial sorted column. 
+	 */
+	private SortOrder sortOrder = SortOrder.asc;
+	
+	/**
 	 * 
 	 */
-	public GridModel(Class<? extends B> beanClass) {
+	public GridModel(Class<B> beanClass) {
 		this.beanClass = beanClass;
 	}
 
 	/**
 	 * @return the beanClass
 	 */
-	public Class<? extends B> getBeanClass() {
+	public Class<B> getBeanClass() {
 		return beanClass;
 	}
 
 	/**
 	 * @param beanClass the beanClass to set
 	 */
-	public void setBeanClass(Class<? extends B> beanClass) {
+	public void setBeanClass(Class<B> beanClass) {
 		this.beanClass = beanClass;
 	}
 
@@ -165,5 +171,19 @@ public class GridModel<B> implements Serializable {
 	 */
 	public void setTransferProtocol(TransferProtocol transferProtocol) {
 		this.transferProtocol = transferProtocol;
+	}
+
+	/**
+	 * @return the sortOrder
+	 */
+	public SortOrder getSortOrder() {
+		return sortOrder;
+	}
+
+	/**
+	 * @param sortOrder the sortOrder to set
+	 */
+	public void setSortOrder(SortOrder sortOrder) {
+		this.sortOrder = sortOrder;
 	}
 }
