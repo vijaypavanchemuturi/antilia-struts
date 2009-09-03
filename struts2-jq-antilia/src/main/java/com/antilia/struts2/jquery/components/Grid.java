@@ -103,6 +103,7 @@ public class Grid extends UIBean {
 		  sb.append("',");
 	  }	  	
 	  sb.append("],");
+	 
 	      // colModel array describes the model of the column.
 	      // name is the name of the column,
 	      // index is the name passed to the server to sort data
