@@ -18,7 +18,6 @@ import com.antilia.common.query.Query;
 import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
 import com.antilia.struts2.jquery.model.SortOrder;
-import com.antilia.struts2.jquery.model.GridModel.TransferProtocol;
 import com.antilia.struts2.jquery.utils.ReflectionUtils;
 
 /**

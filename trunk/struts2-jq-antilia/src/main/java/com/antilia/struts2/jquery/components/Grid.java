@@ -115,7 +115,7 @@ public class Grid extends UIBean {
 	  for(GridColumnModel<?> columnModel: gridModel.getColumnModels()) {
 		  sb.append("{");
 		  sb.append("name:'");		 
-		  sb.append(columnModel.getPropertyPath());		  
+		  sb.append(this.id+columnModel.getPropertyPath());		  
 		  sb.append("',index:'");
 		  sb.append(columnModel.getPropertyPath());
 		  sb.append("', width:");
@@ -146,6 +146,49 @@ public class Grid extends UIBean {
 	  sb.append("imgpath: 'themes/sand/images',");
 	  	// sortname sets the initial sorting column. Can be a name or number.
 	  	// this parameter is added to the url
+	  sb.append("altRows: ");
+	  sb.append(gridModel.isAlternateRows());
+	  sb.append(",");
+	  
+	  if(gridModel.getHeight() != null) {
+		  sb.append("height: '");
+		  sb.append(gridModel.getHeight());
+		  sb.append("',");
+	  }
+	  
+	  if(gridModel.getWidth() != null) {
+		  sb.append("width: ");
+		  sb.append(gridModel.getWidth());
+		  sb.append(",");
+	  }
+	  
+	  if(!gridModel.isShrinkToFit()) {
+		  sb.append("shrinkToFit: ");
+		  sb.append(gridModel.isShrinkToFit());
+		  sb.append(",");
+	  }
+	  
+	  if(gridModel.isRownumbers()) {
+		  sb.append("rownumbers: ");
+		  sb.append(gridModel.isRownumbers());
+		  sb.append(",");		   
+	  }
+	  
+	  if(gridModel.isAutowidth()) {
+		  sb.append("autowidth: ");
+		  sb.append(gridModel.isAutowidth());
+		  sb.append(",");		   
+	  }
+	  
+	  if(!gridModel.isHidegrid()) {
+		  sb.append("hidegrid: ");
+		  sb.append(gridModel.isHidegrid());
+		  sb.append(",");		   
+	  }
+	  
+	  
+	  
+	  
 	  GridColumnModel<?> sortModel = gridModel.getInitialSort();
 	  sb.append("sortname: '");
 	  if(sortModel != null)
