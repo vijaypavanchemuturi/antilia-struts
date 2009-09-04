@@ -19,5 +19,12 @@
         <action name="XMLData" method="xmlData" class="com.antilia.struts2.JQueryGridAction">            
         </action>  
 
+		<action name="AntiliaJQueryDB"  class="com.antilia.struts2.JQueryGridDBAction">            
+        	<result>/struts2/example/AntiliaJQueryDB.jsp</result>
+        </action>
+        
+        <action name="XMLDataDB" method="xmlData" class="com.antilia.struts2.JQueryGridDBAction">            
+        </action>
+        
     </package>
 </struts>
