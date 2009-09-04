@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.antilia.struts2.jquery.model;
+package com.antilia.struts2.jquery.provider;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
@@ -15,6 +15,10 @@ import com.antilia.common.query.IOrder;
 import com.antilia.common.query.IQuery;
 import com.antilia.common.query.Order;
 import com.antilia.common.query.Query;
+import com.antilia.struts2.jquery.model.GridColumnModel;
+import com.antilia.struts2.jquery.model.GridModel;
+import com.antilia.struts2.jquery.model.SortOrder;
+import com.antilia.struts2.jquery.model.GridModel.TransferProtocol;
 import com.antilia.struts2.jquery.utils.ReflectionUtils;
 
 /**
