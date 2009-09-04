@@ -13,9 +13,9 @@
 </s:url>
 <s:a href="%{url}">Back to examples</s:a>
        
-<h2>Antilia's JQuery tags </h2>
+<h2>Static List GRID </h2>
 
 <antsj:grid id="list1" url="XMLData.action" gridModel="gridModel"/>
-    
+
 </body>
 </html>
