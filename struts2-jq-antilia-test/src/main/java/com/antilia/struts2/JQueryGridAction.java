@@ -34,7 +34,9 @@ public class JQueryGridAction extends ExampleSupport {
 
 	
 	private GridModel<Person>  gridModel;
+	
   
+	private GridModel<Person>  gridModel2;
      
 	public String execute() throws Exception {    	   
     	setRequest_locale((String)ServletActionContext.getRequest().getParameter("request_locale"));
@@ -51,6 +53,9 @@ public class JQueryGridAction extends ExampleSupport {
 		gridModel = new GridModel<Person>(Person.class);
 		gridModel.setCaption("Persons");
 		gridModel.setSortOrder(SortOrder.desc);
+		gridModel.setHeight("250px");
+        gridModel.setWidth(900);
+        gridModel.setShrinkToFit(false);        
 		GridColumnModel<Person> columnModel = new GridColumnModel<Person>("name", 100);
         columnModel.setInitialSort(true);
         columnModel.setCellRenderer(new IGridCellRenderer<Person>() {
@@ -77,6 +82,35 @@ public class JQueryGridAction extends ExampleSupport {
         columnModel.setAlignment(Alignment.RIGHT);
         gridModel.addColumnModel(columnModel);
         
+        // gridModel2
+        
+        gridModel2 = new GridModel<Person>(Person.class);
+        //gridModel2.setHeight("250px");
+        //gridModel2.setWidth(900);
+        //gridModel2.setShrinkToFit(false);
+        gridModel2.setCaption("Persons");
+        gridModel2.setSortOrder(SortOrder.desc);
+		columnModel = new GridColumnModel<Person>("name", 100);
+        columnModel.setInitialSort(true);
+        columnModel.setCellRenderer(new IGridCellRenderer<Person>() {
+        	private static final long serialVersionUID = 1L;
+
+			public String renderCell(Person bean, String propertyPath, int column, int row) {
+        		return "<span style=\"color: red;\">"+bean.getName()+"</span>";
+        	}
+        });
+        gridModel2.addColumnModel(columnModel);
+        
+        columnModel = new GridColumnModel<Person>("lastnames", 100);
+        gridModel2.addColumnModel(columnModel);
+        
+        columnModel = new GridColumnModel<Person>("email", 200);
+        gridModel2.addColumnModel(columnModel);
+        
+        columnModel = new GridColumnModel<Person>("address", 200);
+        columnModel.setSortable(false);
+        columnModel.setAlignment(Alignment.CENTER);
+        gridModel2.addColumnModel(columnModel);
         
 	}
        
@@ -183,5 +217,19 @@ public class JQueryGridAction extends ExampleSupport {
 	 */
 	public void setGridModel(GridModel<Person> gridModel) {
 		this.gridModel = gridModel;
+	}
+
+	/**
+	 * @return the gridModel2
+	 */
+	public GridModel<Person> getGridModel2() {
+		return gridModel2;
+	}
+
+	/**
+	 * @param gridModel2 the gridModel2 to set
+	 */
+	public void setGridModel2(GridModel<Person> gridModel2) {
+		this.gridModel2 = gridModel2;
 	}
 }

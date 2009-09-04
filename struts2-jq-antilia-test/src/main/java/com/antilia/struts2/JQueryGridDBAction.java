@@ -47,6 +47,12 @@ public class JQueryGridDBAction extends ExampleSupport {
 	private void innitModel() {
 		gridModel = new GridModel<Country>(Country.class);
 		gridModel.setCaption("Countries");
+		//gridModel.setWidth(1000);
+		//gridModel.setShrinkToFit(false);
+		gridModel.setAutowidth(true);
+		gridModel.setShrinkToFit(false);
+		gridModel.setRownumbers(true);
+		gridModel.setHidegrid(false);
 		gridModel.setSortOrder(SortOrder.asc);
 		GridColumnModel<Country> columnModel = new GridColumnModel<Country>("name", 100);
         columnModel.setInitialSort(true);
