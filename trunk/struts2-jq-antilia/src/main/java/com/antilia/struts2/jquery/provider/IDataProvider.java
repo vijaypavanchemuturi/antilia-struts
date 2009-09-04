@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.antilia.struts2.jquery.model;
+package com.antilia.struts2.jquery.provider;
 
 import java.io.Serializable;
 
