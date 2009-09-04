@@ -41,6 +41,43 @@ public class GridModel<B extends Serializable> implements Serializable {
 	 */
 	private String caption;
 	
+	/**
+	 * Set a zebra-striped grid
+	 */
+	private boolean alternateRows = true;
+	
+	
+	/**
+	 * The height of the grid
+	 */
+	private String height = null;
+	
+	/**
+	 * The width of the table (only in pixels).
+	 */
+	private Integer width = null;
+	
+	/**
+	 * See http://www.secondpersonplural.ca/jqgriddocs/index.htm
+	 */
+	private boolean shrinkToFit = true;
+	
+	/**
+	 * When autowidth is set to true the grid fits to the width of the parent container.
+	 */
+	private boolean autowidth = false;
+	
+	/**
+	 * The optin rownumbers add additional column which count the rows 
+	 */
+	private boolean rownumbers = false;
+	
+	/**
+	 * Enables or disables the show/hide grid button, 
+	 * which appears on the right side of the Caption layer. 
+	 * Takes effect only if the caption property is not an empty string. 
+	 */
+	private boolean hidegrid = true;
 	
 	/**
 	 * Transfer protocol used to communicate with action.
@@ -190,5 +227,103 @@ public class GridModel<B extends Serializable> implements Serializable {
 	 */
 	public void setSortOrder(SortOrder sortOrder) {
 		this.sortOrder = sortOrder;
+	}
+
+	/**
+	 * @return the alternateRows
+	 */
+	public boolean isAlternateRows() {
+		return alternateRows;
+	}
+
+	/**
+	 * @param alternateRows the alternateRows to set
+	 */
+	public void setAlternateRows(boolean alternateRows) {
+		this.alternateRows = alternateRows;
+	}
+
+	/**
+	 * @return the height
+	 */
+	public String getHeight() {
+		return height;
+	}
+
+	/**
+	 * @param height the height to set
+	 */
+	public void setHeight(String height) {
+		this.height = height;
+	}
+
+	/**
+	 * @return the width
+	 */
+	public Integer getWidth() {
+		return width;
+	}
+
+	/**
+	 * @param width the width to set
+	 */
+	public void setWidth(Integer width) {
+		this.width = width;
+	}
+
+	/**
+	 * @return the shrinkToFit
+	 */
+	public boolean isShrinkToFit() {
+		return shrinkToFit;
+	}
+
+	/**
+	 * @param shrinkToFit the shrinkToFit to set
+	 */
+	public void setShrinkToFit(boolean shrinkToFit) {
+		this.shrinkToFit = shrinkToFit;
+	}
+
+	/**
+	 * @return the autowidth
+	 */
+	public boolean isAutowidth() {
+		return autowidth;
+	}
+
+	/**
+	 * @param autowidth the autowidth to set
+	 */
+	public void setAutowidth(boolean autowidth) {
+		this.autowidth = autowidth;
+	}
+
+	/**
+	 * @return the rownumbers
+	 */
+	public boolean isRownumbers() {
+		return rownumbers;
+	}
+
+	/**
+	 * @param rownumbers the rownumbers to set
+	 */
+	public void setRownumbers(boolean rownumbers) {
+		this.rownumbers = rownumbers;
+	}
+
+	/**
+	 * @return the hidegrid
+	 */
+	public boolean isHidegrid() {
+		return hidegrid;
+	}
+
+	/**
+	 * @param hidegrid the hidegrid to set
+	 */
+	public void setHidegrid(boolean hidegrid) {
+		this.hidegrid = hidegrid;
 	}
 }
