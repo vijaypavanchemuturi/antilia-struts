@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import com.antilia.struts2.jquery.model.ListDataProvider;
+import com.antilia.struts2.jquery.provider.ListDataProvider;
 
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)

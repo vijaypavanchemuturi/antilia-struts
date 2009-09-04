@@ -27,7 +27,8 @@
 <h3>List of Examples</h3>
 
 <ul>	
-	<li><a href="/struts2/example/AntiliaJQuery">Antila JQuery</a></li>		
+	<li><a href="/struts2/example/AntiliaJQuery">JQuery based GRID (for a static list)</a></li>
+	<li><a href="/struts2/example/AntiliaJQueryDB">JQuery based GRID (accessing a database)</a></li>		
 </ul>
 </body>
 </html>

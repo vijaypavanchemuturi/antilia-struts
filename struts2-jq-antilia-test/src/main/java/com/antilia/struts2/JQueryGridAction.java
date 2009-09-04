@@ -14,9 +14,9 @@ import com.antilia.struts2.data.Person;
 import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
 import com.antilia.struts2.jquery.model.IGridCellRenderer;
-import com.antilia.struts2.jquery.model.ProviderNavigator;
 import com.antilia.struts2.jquery.model.SortOrder;
 import com.antilia.struts2.jquery.model.GridColumnModel.Alignment;
+import com.antilia.struts2.jquery.provider.ProviderNavigator;
 import com.opensymphony.xwork2.ActionContext;
 
 
