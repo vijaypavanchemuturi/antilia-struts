@@ -14,11 +14,12 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/struts2-core-2.1.6.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xwork-2.1.2.jar" sourcepath="src/main/webapp/WEB-INF/lib/src/xwork-2.1.2-sources.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/antilia-common-1.0.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/derbyclient-10.4.2.0.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/derbynet-10.4.2.0.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/derbyrun-10.4.2.0.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/derbytools-10.4.2.0.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/derby-10.4.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/DdlUtils-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/derby-10.4.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/derbyclient-10.4.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/derbynet-10.4.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/derbyrun-10.4.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/derbytools-10.4.2.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/struts2-jq-antilia"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>
