@@ -5,7 +5,7 @@
 Let's get the demo application working!
 
 
-= Steps =
+= Installing the application =
 
   * Check out project *struts2-jq-antilia* and *struts2-jq-antilia-test* from SVN (see http://code.google.com/p/antilia-struts/source/checkout for details on how to do that). 
   * The demo application assume you are using eclipse as your IDE (sorry, no maven yet). 
