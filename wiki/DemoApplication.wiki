@@ -12,4 +12,6 @@ Let's get the demo application working!
   * There is a launcher struts-2-antilia you can use to start the demo application. This will launch a Jetty server as well as derby network server.
   * The application should be up an running... To see it browse at http://localhost:8080/struts2/.You should see something like.
 http://antilia-struts.googlecode.com/svn/wiki/Demo1.jpg
-  * But still we have to create the database used by the demo. For this there is a an ANT launcher called *buildDataBase2*. This will launch a DDL utils script taht wil construct the database (mind that the application should be running in order this script to work as expected).
+  * But still we have to create the database used by the demo. For this there is a an ANT launcher called *buildDataBase2*. This will launch a DDL utils script taht wil construct the database. To insert data for the application just run the class *com.antilia.struts2.entities.InsertCountries*. *IMPORTANT*: mind that the application should be running when execute the script, so that the derby server is up an running.
+  * Now if you browse at http://localhost:8080/struts2/example/AntiliaJQueryDB you should see something like: 
+http://antilia-struts.googlecode.com/svn/wiki/Demo2.jpg
