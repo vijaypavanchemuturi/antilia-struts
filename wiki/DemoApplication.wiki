@@ -189,3 +189,7 @@ Country.name = Name
 Country.domain = Internet domain
 Country.id = ID
 }}}
+
+= Some explanations =
+
+  * The grid is controlled via an instance of the class GridModel and one or more instances of GridColumnModel (one for each column). Each of these classes has setter methods that allows to configure the grid or the grid column, respectively.
