@@ -194,3 +194,64 @@ Country.id = ID
 
   * The grid is controlled via an instance of the class *GridModel* and one or more instances of *GridColumnModel* (one for each column). Each of these classes has setter methods that allows to configure the grid or the grid column, respectively.
   * This configuration class is passed into the JSP tag via the *gridModel* attribute. 
+  * In this case the grid is receiving data as XML format via the method 
+{{{
+public String xmlData() throws Exception {
+		IPersistenceUnit persistenceUnit = DerbyPersistenceUnit.getInstance();		
+		try {
+			RequestContext requestContext = RequestContext.get();
+			requestContext.setPersistenceUnit(persistenceUnit);		
+			requestContext.setUser("test");			
+			innitModel();
+			ProviderNavigator<Country> navigator = new ProviderNavigator<Country>(new CountriesProvider(), gridModel);				
+			navigator.renderData();
+		} finally {
+			RequestContext.unget();
+		}
+		return null;
+	}
+}}}
+ which is accessing Hibernate as back end. The XML is created by the helper class ProviderNavigator which will take care of producing the XML data needed by the tree. 
+{{{
+public  class ProviderNavigator<B extends Serializable> implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private IDataProvider<B> dataProvider;
+	
+	private GridModel<B> gridModel;
+	
+	private IQuery<B> query;
+	
+	/**
+	 * 
+	 * @param dataProvider
+	 * @param columnModel
+	 */
+	public ProviderNavigator(IDataProvider<B> dataProvider, GridModel<B> gridModel) {
+		this.dataProvider = dataProvider;
+		this.gridModel = gridModel;
+		this.query = new Query<B>(gridModel.getBeanClass());
+	}
+	
+	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public final void renderData() throws Exception {
+		configureProvider(dataProvider);
+		if(this.gridModel.getTransferProtocol().equals(GridModel.TransferProtocol.xml))
+			renderXML(ServletActionContext.getRequest(), ServletActionContext.getResponse());
+		else {
+			renderJson(ServletActionContext.getRequest(), ServletActionContext.getResponse());
+		}
+	}
+....
+
+}
+}}}
+
+Right now only XML is supported.  The ProviderNavigator delegates data retrieval to the class:
+ 
