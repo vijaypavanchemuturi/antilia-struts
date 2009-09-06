@@ -15,3 +15,40 @@ http://antilia-struts.googlecode.com/svn/wiki/Demo1.jpg
   * But still we have to create the database used by the demo. For this there is a an ANT launcher called *buildDataBase2*. This will launch a DDL utils script taht wil construct the database. To insert data for the application just run the class *com.antilia.struts2.entities.InsertCountries*. *IMPORTANT*: mind that the application should be running when execute the script, so that the derby server is up an running.
   * Now if you browse at http://localhost:8080/struts2/example/AntiliaJQueryDB you should see something like: 
 http://antilia-struts.googlecode.com/svn/wiki/Demo2.jpg
+
+= The Source Code =
+
+The struts file:
+
+{{{
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="example" namespace="/struts2/example" extends="struts-default">
+
+		<action name="Index" class="com.antilia.struts2.Index">
+            <result>/struts2/example/Index.jsp</result>
+        </action>
+        
+        
+        <action name="AntiliaJQuery"  class="com.antilia.struts2.JQueryGridAction">            
+        	<result>/struts2/example/AntiliaJQuery.jsp</result>
+        </action>
+        
+        <action name="XMLData" method="xmlData" class="com.antilia.struts2.JQueryGridAction">            
+        </action>  
+
+		<action name="AntiliaJQueryDB"  class="com.antilia.struts2.JQueryGridDBAction">            
+        	<result>/struts2/example/AntiliaJQueryDB.jsp</result>
+        </action>
+        
+        <action name="XMLDataDB" method="xmlData" class="com.antilia.struts2.JQueryGridDBAction">            
+        </action>
+        
+    </package>
+</struts>
+}}} 
