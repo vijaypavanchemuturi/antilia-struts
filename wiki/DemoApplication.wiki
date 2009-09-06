@@ -253,5 +253,31 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 }
 }}}
 
-Right now only XML is supported.  The ProviderNavigator delegates data retrieval to the class:
+Right now only XML is supported.  The ProviderNavigator delegates data retrieval to the class. This interface is a follows:
+{{{
+public interface IDataProvider<B extends Serializable> extends Serializable {
+		
+	/**
+	 * Returns an Iterable over the records starting at first and ending at firt+count.
+	 * 
+	 * @param first
+	 * @param count
+	 * @return
+	 */
+	Iterable<? extends B> getData(IQuery<B> query);
+	
+	/**
+	 * 
+	 * @return returns the number of records.
+	 */
+	int getSize(IQuery<B> query); 
+	
+	
+	/**
+	 * 
+	 */
+	void detach();
+
+}
+}}}
  
