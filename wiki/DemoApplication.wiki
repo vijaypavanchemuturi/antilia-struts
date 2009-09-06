@@ -16,6 +16,8 @@ http://antilia-struts.googlecode.com/svn/wiki/Demo1.jpg
   * Now if you browse at http://localhost:8080/struts2/example/AntiliaJQueryDB you should see something like: 
 http://antilia-struts.googlecode.com/svn/wiki/Demo2.jpg
 
+  * Try navigating the table and/or sorting the columns.
+
 = The Source Code =
 
    * The struts file:
@@ -179,4 +181,11 @@ public class JQueryGridDBAction extends ExampleSupport {
     
 </body>
 </html>
+}}}
+  * The package_en.properties file.
+{{{
+Countries = Countries
+Country.name = Name
+Country.domain = Internet domain
+Country.id = ID
 }}}
