@@ -192,4 +192,5 @@ Country.id = ID
 
 = Some explanations =
 
-  * The grid is controlled via an instance of the class GridModel and one or more instances of GridColumnModel (one for each column). Each of these classes has setter methods that allows to configure the grid or the grid column, respectively.
+  * The grid is controlled via an instance of the class *GridModel* and one or more instances of *GridColumnModel* (one for each column). Each of these classes has setter methods that allows to configure the grid or the grid column, respectively.
+  * This configuration class is passed into the JSP tag via the *gridModel* attribute. 
