@@ -84,7 +84,6 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 	protected String renderJson(HttpServletRequest request, HttpServletResponse response) throws Exception {    	   
 		response.setContentType("text/json-comment-filtered"); 
 		PrintWriter writer = response.getWriter(); 
-		System.out.println("HI!");
 		int rows = getNumberOfRows(request);
 		int page = getCurrentPage(request);
 		int records = totalRecords(getQuery());
