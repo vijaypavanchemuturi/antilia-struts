@@ -60,7 +60,7 @@ http://antilia-struts.googlecode.com/svn/wiki/Demo2.jpg
 {{{
 public class JQueryGridDBAction extends ExampleSupport {
 
-    private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
 
 	
 	private GridModel<Country>  gridModel;
@@ -81,23 +81,23 @@ public class JQueryGridDBAction extends ExampleSupport {
 		gridModel.setRownumbers(true);
 		gridModel.setHidegrid(false);
 		gridModel.setSortOrder(SortOrder.asc);
-		GridColumnModel<Country> columnModel = new GridColumnModel<Country>("name", 100);
-        columnModel.setInitialSort(true);
-        columnModel.setCellRenderer(new IGridCellRenderer<Country>() {
+		GridColumnModel<Country> columnModel = new                  GridColumnModel<Country>("name", 100);
+                columnModel.setInitialSort(true);
+                 columnModel.setCellRenderer(new IGridCellRenderer<Country>() {
         	private static final long serialVersionUID = 1L;
 
-			public String renderCell(Country bean, String propertyPath, int column, int row) {
+		public String renderCell(Country bean, String propertyPath, int column, int row) {
         		return "<span style=\"color: red;\">"+bean.getName()+"</span>";
         	}
         });
-        gridModel.addColumnModel(columnModel);
-        // ID
-        columnModel = new GridColumnModel<Country>("id", 100);
-        columnModel.setSortable(false);
-        gridModel.addColumnModel(columnModel);
-        // Domain
-        columnModel = new GridColumnModel<Country>("domain", 200);
-        gridModel.addColumnModel(columnModel);               
+                gridModel.addColumnModel(columnModel);
+                // ID
+                columnModel = new GridColumnModel<Country>("id", 100);
+                columnModel.setSortable(false);
+                gridModel.addColumnModel(columnModel);
+                // Domain
+               columnModel = new GridColumnModel<Country>("domain", 200);
+               gridModel.addColumnModel(columnModel);               
 	}
        
 	
@@ -108,7 +108,7 @@ public class JQueryGridDBAction extends ExampleSupport {
 			requestContext.setPersistenceUnit(persistenceUnit);		
 			requestContext.setUser("test");			
 			innitModel();
-			ProviderNavigator<Country> navigator = new ProviderNavigator<Country>(new CountriesProvider(), gridModel);				
+			ProviderNavigator<Country> navigator = new                                  ProviderNavigator<Country>(new CountriesProvider(), gridModel);				
 			navigator.renderData();
 		} finally {
 			RequestContext.unget();
@@ -116,31 +116,8 @@ public class JQueryGridDBAction extends ExampleSupport {
 		return null;
 	}	
 	
-	
-    /**
-     * Provide default valuie for Message property.
-     */
-    public static final String MESSAGE = "HelloWorld.message";
-
-    /**
-     * Field for Message property.
-     */
-    private String message;
-
-    /**
-     * 
-     */
-    private String request_locale;
+	............
     
-    /**
-     * Return Message property.
-     *
-     * @return Message property
-     */
-    public String getMessage() {
-        return message;
-    }
-
    
 
      /**
@@ -211,7 +188,7 @@ public String xmlData() throws Exception {
 		return null;
 	}
 }}}
- which is accessing Hibernate as back end. The XML is created by the helper class ProviderNavigator which will take care of producing the XML data needed by the tree. 
+ which is accessing Hibernate as back end. The XML is created by the helper class ProviderNavigator which will take care of producing the XML data needed by the grid. 
 {{{
 public  class ProviderNavigator<B extends Serializable> implements Serializable {
 
