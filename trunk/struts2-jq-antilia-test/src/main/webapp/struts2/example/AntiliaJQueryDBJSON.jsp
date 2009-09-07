@@ -13,7 +13,7 @@
 </s:url>
 <s:a href="%{url}">Back to examples</s:a>
        
-<h2>Accessing a DATABase </h2>
+<h2>Accessing a DATABase, communicating with the server via JSON </h2>
 
 <antsj:grid id="list1" url="JSONDataDB.action" gridModel="gridModel"/>
     
