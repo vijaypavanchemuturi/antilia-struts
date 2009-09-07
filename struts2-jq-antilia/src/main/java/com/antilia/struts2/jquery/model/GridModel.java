@@ -35,6 +35,35 @@ public class GridModel<B extends Serializable> implements Serializable {
 	 */
 	private boolean viewrecords = true;
 	
+	/**
+	 * If set to true, an additional column is added on the left side of the grid. 
+	 * This adds 28px to the grid's width. When the grid is constructed the content of 
+	 * this column is filled with a check box element. When we select a row the check 
+	 * box's state becomes checked (unless multiboxonly has been set to true, the row can 
+	 * be clicked anywhere on the row, not just in the checkbox). When we select another row the 
+	 * previous row does not change its state. When we click on a row that is selected, the state 
+	 * becomes unchecked and the row is unselected. (If onRightClickRow has been defined, then 
+	 * right-clicking a row does not select the row). Default value false;
+	 * 
+	 */
+	private boolean multiselect = false;
+	
+	/**
+	 * If multiboxonly is set to true, then a row is selected only when the checkbox is clicked (Yahoo style). 
+	 * Default value <code>false</code>;
+	 */
+	private boolean multiboxonly = false;
+	
+	/**
+	 * When we want selection to occur only when the user holds down a specific key 
+	 * (when clicking), we define that key here. The possible values are: 
+	 * 'shiftKey', 'altKey', and 'ctrlKey'. For example,
+	 * multikey: 'altKey' will ensure that multiselection occurs 
+	 * only when the user holds down the "Alt" key. 	
+	 * 
+	 * Default value <code>empty</code>.
+	 */
+	private String multikey;
 	
 	/**
 	 * The caption show by the grid (or the key in a resource bundle).
@@ -68,7 +97,7 @@ public class GridModel<B extends Serializable> implements Serializable {
 	private boolean autowidth = false;
 	
 	/**
-	 * The optin rownumbers add additional column which count the rows 
+	 * The option rownumbers add additional column which count the rows 
 	 */
 	private boolean rownumbers = false;
 	
@@ -366,5 +395,47 @@ public class GridModel<B extends Serializable> implements Serializable {
 	 */
 	public void setResizeclass(String resizeclass) {
 		this.resizeclass = resizeclass;
+	}
+
+	/**
+	 * @return the multiselect
+	 */
+	public boolean isMultiselect() {
+		return multiselect;
+	}
+
+	/**
+	 * @param multiselect the multiselect to set
+	 */
+	public void setMultiselect(boolean multiselect) {
+		this.multiselect = multiselect;
+	}
+
+	/**
+	 * @return the multikey
+	 */
+	public String getMultikey() {
+		return multikey;
+	}
+
+	/**
+	 * @param multikey the multikey to set
+	 */
+	public void setMultikey(String multikey) {
+		this.multikey = multikey;
+	}
+
+	/**
+	 * @return the multiboxonly
+	 */
+	public boolean isMultiboxonly() {
+		return multiboxonly;
+	}
+
+	/**
+	 * @param multiboxonly the multiboxonly to set
+	 */
+	public void setMultiboxonly(boolean multiboxonly) {
+		this.multiboxonly = multiboxonly;
 	}
 }
