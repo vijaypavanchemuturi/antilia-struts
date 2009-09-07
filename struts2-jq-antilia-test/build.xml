@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE project [
+]>
+
+<project name="struts2-jq-antilia-test" basedir="." default="CopyJar">
+	
+		<target name="CreateJar">
+			<ant antfile="../struts2-jq-antilia/build.xml" dir="../struts2-jq-antilia" target="CreateJar"/>
+		</target>
+	
+		<target name="CopyJar" depends="CreateJar">
+			<copyfile dest="./src/main/webapp/WEB-INF/lib/${deploy.file}.jar" src="../struts2-jq-antilia/struts2-jq-antilia.1.0.jar"/>		
+		</target>
+		
+</project>
