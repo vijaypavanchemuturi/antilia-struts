@@ -5,6 +5,7 @@ package com.antilia.struts2.jquery.provider;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -83,19 +84,46 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 	protected String renderJson(HttpServletRequest request, HttpServletResponse response) throws Exception {    	   
 		response.setContentType("text/json-comment-filtered"); 
 		PrintWriter writer = response.getWriter(); 
-		writer.print("{\"page\":\"1\",\"total\":2,\"records\":\"13\",");
+		int rows = getNumberOfRows(request);
+		int page = getCurrentPage(request);
+		int records = totalRecords(getQuery());
+		int totalPages = (records/rows)+1;
+		writer.print("{\"page\":\"");
+		writer.print(page);		
+		writer.print("\",\"total\":\"");
+		writer.print(totalPages);
+		writer.print("\",\"records\":\"");
+		writer.print(records);
+		writer.print("\",");
 		writer.print("\"rows\":[");
-		writer.print("{\"id\":\"13\",\"cell\":[\"13\",\"2007-10-06\",\"Client 3\",\"1000.00\",\"0.00\",\"1000.00\",null]}");
-		writer.print(",{\"id\":\"12\",\"cell\":[\"12\",\"2007-10-06\",\"Client 2\",\"700.00\",\"140.00\",\"840.00\",null]}");
-		writer.print(",{\"id\":\"11\",\"cell\":[\"11\",\"2007-10-06\",\"Client 1\",\"600.00\",\"120.00\",\"720.00\",null]}");
-		writer.print(",{\"id\":\"10\",\"cell\":[\"10\",\"2007-10-06\",\"Client 2\",\"100.00\",\"20.00\",\"120.00\",null]}");
-		writer.print(",{\"id\":\"9\",\"cell\":[\"9\",\"2007-10-06\",\"Client 1\",\"200.00\",\"40.00\",\"240.00\",null]}");
-		writer.print(",{\"id\":\"8\",\"cell\":[\"8\",\"2007-10-06\",\"Client 3\",\"200.00\",\"0.00\",\"200.00\",null]}");
-		writer.print(",{\"id\":\"7\",\"cell\":[\"7\",\"2007-10-05\",\"Client 2\",\"120.00\",\"12.00\",\"134.00\",null]}");
-		writer.print(",{\"id\":\"6\",\"cell\":[\"6\",\"2007-10-05\",\"Client 1\",\"50.00\",\"10.00\",\"60.00\",null]}");
-		writer.print(",{\"id\":\"5\",\"cell\":[\"5\",\"2007-10-05\",\"Client 3\",\"100.00\",\"0.00\",\"100.00\",\"no tax\"]}");
-		writer.print(",{\"id\":\"4\",\"cell\":[\"4\",\"2007-10-04\",\"Client 3\",\"150.00\",\"0.00\",\"150.00\",\"no tax\"]}]");
-		writer.print(",\"userdata\":{\"amount\":3220,\"tax\":342,\"total\":3564,\"name\":\"Totals:\"}}"); 		
+		int row = 1;
+		Iterator<? extends B> it = getRows(getQuery()).iterator();
+		while(it.hasNext()) {
+			B bean = it.next();
+			writer.print("{");
+			writer.print("\"id\":\""+row);
+			writer.print("\", \"cell\":[");
+		    int column = 1;
+		    Iterator<GridColumnModel<B>> it1 = this.gridModel.getColumnModels().iterator();		    
+		    while(it1.hasNext()) {
+		    	GridColumnModel<B> columnModel = it1.next();
+		    	writer.print("\"");	
+		    	//TODO: do escaping for JSON format.
+		    	//if(columnModel.getCellRenderer() != null)
+		    	//	writer.print(columnModel.getCellRenderer().renderCell(bean, columnModel.getPropertyPath(), column, row));		    		
+		    	///else
+		    	writer.print(createCellContent(row, column, columnModel.getPropertyPath(), bean));		    	
+		    		
+		    	writer.print("\"");
+		    	if(it1.hasNext())
+		    		writer.print(",");
+		    }
+		    writer.print("]}");
+		    if(it.hasNext())
+		    	writer.print(",");
+		    row++;
+		}						
+		writer.print("]}"); 		
 		writer.flush();		
 		return null;
     }
