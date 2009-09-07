@@ -13,6 +13,7 @@ import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
 import com.antilia.struts2.jquery.model.IGridCellRenderer;
 import com.antilia.struts2.jquery.model.SortOrder;
+import com.antilia.struts2.jquery.model.GridModel.TransferProtocol;
 import com.antilia.struts2.jquery.provider.ProviderNavigator;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -25,7 +26,7 @@ import com.opensymphony.xwork2.ActionContext;
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
  */
-public class JQueryGridDBAction extends ExampleSupport {
+public abstract class JQueryGridDBAction extends ExampleSupport {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,10 +36,7 @@ public class JQueryGridDBAction extends ExampleSupport {
      
 	public String execute() throws Exception {    	   
     	setRequest_locale((String)ServletActionContext.getRequest().getParameter("request_locale"));
-        setMessage(getText(MESSAGE));
-        
-           
-        
+        setMessage(getText(MESSAGE));                
         innitModel();
 
         return SUCCESS;
@@ -47,8 +45,8 @@ public class JQueryGridDBAction extends ExampleSupport {
 	private void innitModel() {
 		gridModel = new GridModel<Country>(Country.class);
 		gridModel.setCaption("Countries");
-		//gridModel.setWidth(1000);
-		//gridModel.setShrinkToFit(false);
+		// transfer protocol will determine how the tag communicates with the back end.
+		gridModel.setTransferProtocol(getTransferProtocol());
 		gridModel.setAutowidth(true);
 		gridModel.setShrinkToFit(false);
 		gridModel.setRownumbers(true);
@@ -73,12 +71,13 @@ public class JQueryGridDBAction extends ExampleSupport {
         
         columnModel = new GridColumnModel<Country>("domain", 200);
         gridModel.addColumnModel(columnModel);
-        
-       
+               
 	}
+	
+	protected abstract TransferProtocol getTransferProtocol();
        
 	
-	public String xmlData() throws Exception {
+	public String getData() throws Exception {
 		IPersistenceUnit persistenceUnit = DerbyPersistenceUnit.getInstance();		
 		try {
 			RequestContext requestContext = RequestContext.get();
