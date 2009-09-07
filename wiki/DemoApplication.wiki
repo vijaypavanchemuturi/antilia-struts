@@ -253,7 +253,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 }
 }}}
 
-Right now only XML is supported.  The ProviderNavigator delegates data retrieval to the class. This interface is a follows:
+Right now only XML is supported.  The ProviderNavigator delegates data retrieval to the an instance of the interface IDataProvider. This interface is a follows:
 {{{
 public interface IDataProvider<B extends Serializable> extends Serializable {
 		
@@ -280,7 +280,7 @@ public interface IDataProvider<B extends Serializable> extends Serializable {
 
 }
 }}}
-The IQuery interface encapsulates the query that is passed by the table.
+The IQuery interface encapsulates the query needed to load the data of the table.
 {{{
 public interface IQuery<B extends Serializable> extends Serializable  {
 	
@@ -359,19 +359,37 @@ public interface IQuery<B extends Serializable> extends Serializable  {
 	IQuery<B> setProjection(IProjection projection);
 	
 	/**
-	 * 
+	 * Returns the projection.
 	 * @return
 	 */
 	public IProjection getProjection();
 	
+	/**
+	 * Sets the maximum number of results that executing the query should return.
+	 * 
+	 * @param maxResults
+	 * @return
+	 */
 	public IQuery<B> setMaxResults(int maxResults);
 	
+	/**
+	 * @return Gets the maximum number of results that executing the query should return.
+	 */
 	public int getMaxResults( );
 	
+	/**
+	 * 	Sets the first result that executing the query should return.
+	 * 
+	 * @param firstResult
+	 * @return
+	 */
 	public IQuery<B> setFirstResult(int firstResult);
 	
+	/**
+	 * 
+	 * @return Gets the first result that executing the query should return.
+	 */
 	public int getFirstResult( );
-	
-	
+
 }
 }}}
