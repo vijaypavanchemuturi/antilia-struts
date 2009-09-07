@@ -253,7 +253,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 }
 }}}
 
-Right now only XML is supported.  The ProviderNavigator delegates data retrieval to the an instance of the interface IDataProvider. This interface is a follows:
+  * Right now only XML is supported.  The ProviderNavigator delegates data retrieval to the an instance of the interface IDataProvider. This interface is a follows:
 {{{
 public interface IDataProvider<B extends Serializable> extends Serializable {
 		
@@ -280,7 +280,7 @@ public interface IDataProvider<B extends Serializable> extends Serializable {
 
 }
 }}}
-The IQuery interface encapsulates the query needed to load the data of the table.
+  * The IQuery interface encapsulates the query needed to load the data of the table.
 {{{
 public interface IQuery<B extends Serializable> extends Serializable  {
 	
