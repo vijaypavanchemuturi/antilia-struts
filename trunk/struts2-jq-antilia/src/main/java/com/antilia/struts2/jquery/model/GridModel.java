@@ -102,7 +102,20 @@ public class GridModel<B extends Serializable> implements Serializable {
 	private SortOrder sortOrder = SortOrder.asc;
 	
 	/**
+	 * The page sizes that are displayed on the corresponding select at the navigation bar.
+	 * Setting it to <code>null</code> will disable the select.
+	 */
+	private int[] rowList = {10,20,30};
+	
+	
+	/**
+	 * Assigns a class to columns that are resizable so that we can show a resize handle only for ones that are resizable.
 	 * 
+	 */
+	private String resizeclass;
+	
+	/**
+	 * List of rows sizes that will appear on the select box.
 	 */
 	public GridModel(Class<B> beanClass) {
 		this.beanClass = beanClass;
@@ -325,5 +338,33 @@ public class GridModel<B extends Serializable> implements Serializable {
 	 */
 	public void setHidegrid(boolean hidegrid) {
 		this.hidegrid = hidegrid;
+	}
+
+	/**
+	 * @return the rowList
+	 */
+	public int[] getRowList() {
+		return rowList;
+	}
+
+	/**
+	 * @param rowList the rowList to set
+	 */
+	public void setRowList(int[] rowList) {
+		this.rowList = rowList;
+	}
+
+	/**
+	 * @return the resizeclass
+	 */
+	public String getResizeclass() {
+		return resizeclass;
+	}
+
+	/**
+	 * @param resizeclass the resizeclass to set
+	 */
+	public void setResizeclass(String resizeclass) {
+		this.resizeclass = resizeclass;
 	}
 }
