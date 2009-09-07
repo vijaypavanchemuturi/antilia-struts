@@ -8,11 +8,16 @@ import java.io.Serializable;
 import com.antilia.common.util.StringUtils;
 
 /**
+ * Allows to configure a jqrid column.
+ * 
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
  *
  */
 public class GridColumnModel<B extends Serializable> {
 
+	/**
+	 * The parent GridModel.
+	 */
 	private GridModel<B> gridModel;
 	
 	/**
@@ -21,14 +26,19 @@ public class GridColumnModel<B extends Serializable> {
 	private int width = 100;
 	
 	/**
-	 * The property path.
+	 * The property path used by the column to retrieve a cell value.
 	 */
 	private String propertyPath;
 	
 	/**
-	 *  If the column is sortable
+	 *  Flag to set column sortability. True by default. 
 	 */
 	private boolean sortable = true;
+	
+	/**
+	 * Flag to set column resizability. True by default.
+	 */
+	private boolean resizable = true;
 	
 	
 	/**
@@ -44,12 +54,21 @@ public class GridColumnModel<B extends Serializable> {
 	private IGridCellRenderer<B> cellRenderer;
 
 	
+	/**
+	 * Supported alignments.
+	 * 
+	 * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
+	 *
+	 */
 	public static enum Alignment {
 		RIGHT,
 		CENTER,
 		LEFT,
 	}
 	
+	/**
+	 * Cell alignment.
+	 */
 	private Alignment alignment = Alignment.LEFT;
 	
 	/**
@@ -178,6 +197,20 @@ public class GridColumnModel<B extends Serializable> {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the resizable
+	 */
+	public boolean isResizable() {
+		return resizable;
+	}
+
+	/**
+	 * @param resizable the resizable to set
+	 */
+	public void setResizable(boolean resizable) {
+		this.resizable = resizable;
 	}
 
 }

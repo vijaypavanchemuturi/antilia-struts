@@ -28,6 +28,7 @@ import org.apache.struts2.util.TextProviderHelper;
 import org.apache.struts2.views.annotations.StrutsTag;
 import org.apache.struts2.views.annotations.StrutsTagSkipInheritance;
 
+import com.antilia.common.util.StringUtils;
 import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
 import com.opensymphony.xwork2.util.ValueStack;
@@ -122,6 +123,8 @@ public class Grid extends UIBean {
 		  sb.append(columnModel.getWidth());
 		  sb.append(", sortable:");
 		  sb.append(columnModel.isSortable());
+		  sb.append(", resizable:");
+		  sb.append(columnModel.isResizable());
 		  if(columnModel.getAlignment()!= null) {
 			  sb.append(", align:'");
 			  sb.append(columnModel.getAlignment().name().toLowerCase());
@@ -138,11 +141,20 @@ public class Grid extends UIBean {
 	      // rowNum parameter describes how many records we want to
 	      // view in the grid. We use this in example.php to return
 	      // the needed data.
-	  sb.append("rowNum:10,");
-	      // rowList parameter construct a select box element in the pager
-	      //in wich we can change the number of the visible rows
-	  sb.append("rowList:[10,20,30],");
-	      // path to mage location needed for the grid
+	  if((gridModel.getRowList() != null) && gridModel.getRowList().length > 0) {
+		  sb.append("rowNum:");
+		  sb.append(gridModel.getRowList()[0]);
+		  sb.append(",");		  
+		  // rowList parameter construct a select box element in the pager
+		  //in which we can change the number of the visible rows
+		  sb.append("rowList:[");
+		  for(int i: gridModel.getRowList()) {
+			  sb.append(i);
+			  sb.append(",");
+		  }
+		  sb.append("],");
+	  } 
+	  // path to mage location needed for the grid
 	  sb.append("imgpath: 'themes/sand/images',");
 	  	// sortname sets the initial sorting column. Can be a name or number.
 	  	// this parameter is added to the url
@@ -185,6 +197,14 @@ public class Grid extends UIBean {
 		  sb.append(gridModel.isHidegrid());
 		  sb.append(",");		   
 	  }
+	  
+	  if(!StringUtils.isEmpty(gridModel.getResizeclass())) {
+		  sb.append("resizeclass: '");
+		  sb.append(gridModel.getResizeclass());
+		  sb.append("',");		   
+	  }
+	  
+	  
 	  
 	  
 	  
