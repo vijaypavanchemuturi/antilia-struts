@@ -32,7 +32,9 @@ public interface IDataProvider<B extends Serializable> extends Serializable {
 	
 	
 	/**
-	 * 
+	 * Can be used to detach any heavy resources that where created while
+	 * finding the data produced by the query. Detach will always be called  
+	 * after getData() and getSize() methods have been both executed.
 	 */
 	void detach();
 
