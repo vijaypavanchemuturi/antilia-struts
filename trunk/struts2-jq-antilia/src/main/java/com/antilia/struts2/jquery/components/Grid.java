@@ -192,6 +192,27 @@ public class Grid extends UIBean {
 		  sb.append(",");		   
 	  }
 	  
+	  if(gridModel.isMultiselect()) {
+		  sb.append("multiselect: ");
+		  sb.append(gridModel.isMultiselect());
+		  sb.append(",");
+	  }
+	  
+	  if(gridModel.isMultiboxonly()) {
+		  sb.append("multiboxonly: ");
+		  sb.append(gridModel.isMultiboxonly());
+		  sb.append(",");
+	  }
+	  
+	  
+	  if(!StringUtils.isEmpty(gridModel.getMultikey())) {
+		  sb.append("multikey: ");
+		  sb.append(gridModel.getMultikey());
+		  sb.append(",");
+	  }
+	  
+	  
+	  
 	  if(!gridModel.isHidegrid()) {
 		  sb.append("hidegrid: ");
 		  sb.append(gridModel.isHidegrid());
