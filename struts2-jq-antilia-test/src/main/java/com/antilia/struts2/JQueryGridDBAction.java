@@ -67,6 +67,7 @@ public class JQueryGridDBAction extends ExampleSupport {
         
         columnModel = new GridColumnModel<Country>("id", 100);
         columnModel.setSortable(false);
+        columnModel.setResizable(false);
         gridModel.addColumnModel(columnModel);
         
         columnModel = new GridColumnModel<Country>("domain", 200);
