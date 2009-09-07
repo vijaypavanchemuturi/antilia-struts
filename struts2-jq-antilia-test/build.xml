@@ -9,7 +9,7 @@
 		</target>
 	
 		<target name="CopyJar" depends="CreateJar">
-			<copyfile dest="./src/main/webapp/WEB-INF/lib/${deploy.file}.jar" src="../struts2-jq-antilia/struts2-jq-antilia.1.0.jar"/>		
+			<copyfile dest="./src/main/webapp/WEB-INF/lib/struts2-jq-antilia.1.0.jar" src="../struts2-jq-antilia/struts2-jq-antilia.1.0.jar"/>		
 		</target>
 		
 </project>
