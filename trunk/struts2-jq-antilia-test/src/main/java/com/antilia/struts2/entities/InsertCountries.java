@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import com.antilia.common.util.StringUtils;
 import com.antilia.hibernate.cfg.IPersistenceUnit;
@@ -27,15 +28,16 @@ public class InsertCountries {
 		List<Country> countries = new ArrayList<Country>();
 		
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(InsertCountries.class.getResourceAsStream("Counties.txt")));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(InsertCountries.class.getResourceAsStream("country_code.txt")));
 			String line = null;
 			do {
 				line =reader.readLine();
 				Country country = new Country();				
-				if(!StringUtils.isEmpty(line)) {
+				if(!StringUtils.isEmpty(line)) {	
 					line = line.trim();
-					country.setName(line);
-					country.setDomain(line.substring(0, 2).toLowerCase());
+					StringTokenizer st = new StringTokenizer(line,"|");
+					country.setDomain(st.nextToken());
+					country.setName(st.nextToken());					
 					countries.add(country);
 				}
 			} while(line != null);
