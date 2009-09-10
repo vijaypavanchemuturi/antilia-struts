@@ -29,7 +29,8 @@
 <ul>	
 	<li><a href="/struts2/example/AntiliaJQuery">JQuery based GRID (for a static list)</a></li>
 	<li><a href="/struts2/example/JQueryGridDBXMLAction">JQuery based GRID (accessing a database, communication with server via XML)</a></li>	
-	<li><a href="/struts2/example/JQueryGridDBJSONAction">JQuery based GRID (accessing a database, communication with server via JSON)</a></li>	
+	<li><a href="/struts2/example/JQueryGridDBJSONAction">JQuery based GRID (accessing a database, communication with server via JSON)</a></li>
+	<li><a href="/struts2/example/JQGridInPanel">JQuery based GRID in a floating panel</a></li>	
 </ul>
 </body>
 </html>

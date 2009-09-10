@@ -33,5 +33,9 @@
         <action name="JSONDataDB" method="getData" class="com.antilia.struts2.JQueryGridDBJSONAction">            
         </action>
         
+        <action name="JQGridInPanel"  class="com.antilia.struts2.JQueryGridAction">            
+        	<result>/struts2/example/JQGridInPanel.jsp</result>
+        </action>
+        
     </package>
 </struts>
