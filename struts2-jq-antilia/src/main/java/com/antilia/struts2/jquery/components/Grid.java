@@ -244,7 +244,7 @@ public class Grid extends UIBean {
 	  sb.append(gridModel.getSortOrder().name());
 	  sb.append("\",");	  
 	  sb.append("caption: \"");
-	  //TODO: get it for resource and use caption as key.
+	  //Got it form the resources
 	  String caption = TextProviderHelper.getText(gridModel.getCaption(), gridModel.getCaption(), stack);
 	  sb.append(caption);
 	  sb.append("\"");
