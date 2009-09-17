@@ -54,7 +54,6 @@ public class ListDataProvider<B extends Serializable> implements IDataProvider<B
 		return tempList.size();
 	}
 	
-	@Override
 	public void detach() {
 		tempList = null;
 	}

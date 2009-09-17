@@ -25,12 +25,10 @@ public class QuerableDaoProvider<B extends Serializable> implements IDataProvide
 		this.querableDao = querableDao;
 	}
 
-	@Override
 	public Iterable<? extends B> getData(IQuery<B> query) {
 		return querableDao.findAll(query);
 	}
 	
-	@Override
 	public int getSize(IQuery<B> query) {
 		Long size = querableDao.count(query);
 		if(size != null)
@@ -39,7 +37,6 @@ public class QuerableDaoProvider<B extends Serializable> implements IDataProvide
 	}
 	
 	
-	@Override
 	public void detach() {
 		// do nothing as I'm not caching anything
 	}
