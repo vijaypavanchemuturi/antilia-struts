@@ -15,7 +15,7 @@ public class ListCountries {
 	public static void main(String[] args) {
 		// net.sf.cglib.core.DebuggingClassWriter@1854b38
 		// net.sf.cglib.core.DebuggingClassWriter@40627c
-		IPersistenceUnit persistenceUnit = DerbyPersistenceUnit.getInstance();		
+		IPersistenceUnit persistenceUnit = HSQLDBPersistenceUnit.getInstance();		
 		RequestContext requestContext = RequestContext.get();
 		requestContext.setPersistenceUnit(persistenceUnit);		
 		requestContext.setUser("test");

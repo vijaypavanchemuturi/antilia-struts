@@ -16,5 +16,5 @@
 <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.antilia.struts2.test.Start"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="struts2-jq-antilia-test"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dderby.drda.startNetworkServer=true&#13;&#10;-Dderby.drda.portNumber=1527"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dderby.drda.startNetworkServer=true&#13;&#10;-Dderby.drda.portNumber=1527&#13;&#10;-Djetty.port=8981"/>
 </launchConfiguration>
