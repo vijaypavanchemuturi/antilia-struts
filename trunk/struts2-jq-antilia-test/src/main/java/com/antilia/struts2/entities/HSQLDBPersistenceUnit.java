@@ -4,7 +4,7 @@
  */
 package com.antilia.struts2.entities;
 
-import org.hibernate.dialect.DerbyDialect;
+import org.hibernate.dialect.HSQLDialect;
 
 import com.antilia.hibernate.cfg.PersistenceUnit;
 
@@ -15,28 +15,32 @@ import com.antilia.hibernate.cfg.PersistenceUnit;
  * @author Ernesto Reinaldo Barreiro (reiern70@gmail.com)
  *
  */
-public class DerbyPersistenceUnit extends PersistenceUnit {
+public class HSQLDBPersistenceUnit extends PersistenceUnit {
 
-	private  static final DerbyPersistenceUnit instance = new DerbyPersistenceUnit();
+	private  static final HSQLDBPersistenceUnit instance = new HSQLDBPersistenceUnit();
 	
 	/**
 	 * @param name
 	 */
-	private DerbyPersistenceUnit() {
+	private HSQLDBPersistenceUnit() {
 		super("_derby");
 		
-		setDriverClass(org.apache.derby.jdbc.ClientDriver.class);
-		setDialect(DerbyDialect.class);
-		setUserName("reiern");
-		setPassword("reiern");
-		setConnectionUrl("jdbc:derby://localhost:1527/manager");
+		setDriverClass(org.hsqldb.jdbcDriver.class);
+		setDialect(HSQLDialect.class);
+		setUserName("sa");
+		setPassword("");
+		setConnectionUrl("jdbc:hsqldb:mem:manager");
 		setCurrentSessionContextClass(SessionContextClass.thread);
 		setUseReflectionOptimizer(false);
 		setDefaultSchema(null);
 		setTransactionFactoryClass(org.hibernate.transaction.JDBCTransactionFactory.class);
 		setShowSql(true);
 		setConnectionAutocommit(true);
-		
+		setProperty("hibernate.connection.pool_size", "1").
+		setProperty("hibernate.connection.autocommit", "true").
+		setProperty("hibernate.cache.provider_class", "org.hibernate.cache.HashtableCacheProvider").
+		setProperty("hibernate.hbm2ddl.auto", "create-drop");
+         
 		addPersistenceSet(ManagerPersistenceSet.getInstance());
 				
 	}
@@ -44,7 +48,7 @@ public class DerbyPersistenceUnit extends PersistenceUnit {
 	/**
 	 * @return the instance
 	 */
-	public static DerbyPersistenceUnit getInstance() {
+	public static HSQLDBPersistenceUnit getInstance() {
 		return instance;
 	}
 

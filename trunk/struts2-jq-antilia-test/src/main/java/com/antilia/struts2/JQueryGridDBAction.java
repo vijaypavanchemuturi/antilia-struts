@@ -8,7 +8,8 @@ import com.antilia.hibernate.cfg.IPersistenceUnit;
 import com.antilia.hibernate.context.RequestContext;
 import com.antilia.struts2.data.CountriesProvider;
 import com.antilia.struts2.entities.Country;
-import com.antilia.struts2.entities.DerbyPersistenceUnit;
+import com.antilia.struts2.entities.HSQLDBPersistenceUnit;
+import com.antilia.struts2.entities.InsertData;
 import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
 import com.antilia.struts2.jquery.model.IGridCellRenderer;
@@ -78,18 +79,29 @@ public abstract class JQueryGridDBAction extends ExampleSupport {
        
 	
 	public String getData() throws Exception {
-		IPersistenceUnit persistenceUnit = DerbyPersistenceUnit.getInstance();		
+		IPersistenceUnit persistenceUnit = HSQLDBPersistenceUnit.getInstance();		
 		try {
 			RequestContext requestContext = RequestContext.get();
 			requestContext.setPersistenceUnit(persistenceUnit);		
 			requestContext.setUser("test");
 			
 			innitModel();
+			
+			try {
+				InsertData.checkData();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.exit(-1);
+			} 
+			
 			ProviderNavigator<Country> navigator = new ProviderNavigator<Country>(new CountriesProvider(), gridModel);				
 			navigator.renderData();
-		} finally {
-			RequestContext.unget();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		finally {
+			RequestContext.unget();
+		} 
 		return null;
 	}	
 	
