@@ -28,9 +28,9 @@ import org.apache.struts2.util.TextProviderHelper;
 import org.apache.struts2.views.annotations.StrutsTag;
 import org.apache.struts2.views.annotations.StrutsTagSkipInheritance;
 
-import com.antilia.common.util.StringUtils;
 import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
+import com.antilia.struts2.jquery.utils.StringUtils;
 import com.opensymphony.xwork2.util.ValueStack;
 
 /**

@@ -5,7 +5,7 @@ package com.antilia.struts2.jquery.model;
 
 import java.io.Serializable;
 
-import com.antilia.common.util.StringUtils;
+import com.antilia.struts2.jquery.utils.StringUtils;
 
 /**
  * Allows to configure a jqrid column.
