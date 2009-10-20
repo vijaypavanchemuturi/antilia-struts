@@ -12,12 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.antilia.common.query.IOrder;
-import com.antilia.common.query.IQuery;
-import com.antilia.common.query.Order;
-import com.antilia.common.query.Query;
 import com.antilia.struts2.jquery.model.GridColumnModel;
 import com.antilia.struts2.jquery.model.GridModel;
+import com.antilia.struts2.jquery.model.SortInfo;
 import com.antilia.struts2.jquery.model.SortOrder;
 import com.antilia.struts2.jquery.utils.ReflectionUtils;
 
@@ -33,17 +30,21 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 	
 	private GridModel<B> gridModel;
 	
-	private IQuery<B> query;
+	//private IQuery<B> query;
+	
+	private B searchBean;
+	
+	private SortInfo sortInfo;
 	
 	/**
 	 * 
 	 * @param dataProvider
 	 * @param columnModel
 	 */
-	public ProviderNavigator(IDataProvider<B> dataProvider, GridModel<B> gridModel) {
+	public ProviderNavigator(IDataProvider<B> dataProvider, GridModel<B> gridModel, B searchBean) {
 		this.dataProvider = dataProvider;
 		this.gridModel = gridModel;
-		this.query = new Query<B>(gridModel.getBeanClass());
+		this.searchBean = searchBean;		
 	}
 	
 	
@@ -53,7 +54,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 	 * @return
 	 */
 	public final void renderData() throws Exception {
-		configureProvider(dataProvider);
+		configureSort();
 		if(this.gridModel.getTransferProtocol().equals(GridModel.TransferProtocol.xml))
 			renderXML(ServletActionContext.getRequest(), ServletActionContext.getResponse());
 		else {
@@ -66,9 +67,15 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 	 * 
 	 * @param dataProvider
 	 */
-	protected void configureProvider(IDataProvider<B> dataProvider) {
+	protected void configureSort() {
 		SortOrder sortOrder = getSortOrder(ServletActionContext.getRequest());
 		String propertyPath = getSortColumn(ServletActionContext.getRequest());
+		if(propertyPath != null) {
+			this.sortInfo = new SortInfo(propertyPath, sortOrder);
+		} else {
+			this.sortInfo = null;
+		}
+		/*
 		getQuery().clearOrders();
 		IOrder<B> order = Order.des(propertyPath);
 		if(sortOrder.equals(SortOrder.asc)) {
@@ -79,6 +86,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		int page = getCurrentPage(ServletActionContext.getRequest());
 		getQuery().setFirstResult(rows*(page-1));
 		getQuery().setMaxResults(rows);
+		*/
 	}
 	
 	protected String renderJson(HttpServletRequest request, HttpServletResponse response) throws Exception {    	   
@@ -86,7 +94,8 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		PrintWriter writer = response.getWriter(); 
 		int rows = getNumberOfRows(request);
 		int page = getCurrentPage(request);
-		int records = totalRecords(getQuery());
+		int records = totalRecords(getSearchBean(), this.sortInfo);
+		int start = rows*(page-1);
 		int totalPages = (records/rows)+1;
 		writer.print("{\"page\":\"");
 		writer.print(page);		
@@ -97,7 +106,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		writer.print("\",");
 		writer.print("\"rows\":[");
 		int row = 1;
-		Iterator<? extends B> it = getRows(getQuery()).iterator();
+		Iterator<? extends B> it = getRows(start, rows, getSearchBean(), sortInfo).iterator();
 		while(it.hasNext()) {
 			B bean = it.next();
 			writer.print("{");
@@ -138,7 +147,8 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		PrintWriter writer = response.getWriter();
 		int rows = getNumberOfRows(request);
 		int page = getCurrentPage(request);
-		int records = totalRecords(getQuery());
+		int records = totalRecords(getSearchBean(),this.sortInfo);
+		int start = rows*(page-1);
 		int totalPages = (records/rows)+1;
 		writer.println("<?xml version='1.0' encoding='utf-8'?>");
 		writer.println("<rows>");
@@ -152,7 +162,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		writer.print(records);;		
 		writer.println("</records>");		
 		int row = 1;
-		for(B bean: getRows(getQuery()) ) {
+		for(B bean: getRows(start, rows, getSearchBean(), sortInfo)) {
 			writer.print("<row id=\"");
 			writer.print("row"+row);
 			writer.println("\">");
@@ -183,12 +193,12 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		return "";
 	}	
 	
-	private Iterable<? extends B> getRows(IQuery<B> query) {
-		return this.dataProvider.getData(query);
+	private Iterable<? extends B> getRows(int start, int rows, B searchBean, SortInfo sortInfo) {
+		return this.dataProvider.getData(start, rows, searchBean, sortInfo);
 	}
 	
-	private int totalRecords(IQuery<B> query) {
-		return this.dataProvider.getSize(query);
+	private int totalRecords(B searchBean, SortInfo sortInfo) {
+		return this.dataProvider.getSize(searchBean, sortInfo);
 	}
 	
 	private int getCurrentPage(HttpServletRequest request) {
@@ -225,20 +235,12 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 	}
 
 
-	/**
-	 * @return the query
-	 */
-	public IQuery<B> getQuery() {
-		return query;
+	public B getSearchBean() {
+		return searchBean;
 	}
 
 
-	/**
-	 * @param query the query to set
-	 */
-	public void setQuery(IQuery<B> query) {
-		this.query = query;
-	}
-	
-		
+	public void setSearchBean(B searchBean) {
+		this.searchBean = searchBean;
+	}		
 }

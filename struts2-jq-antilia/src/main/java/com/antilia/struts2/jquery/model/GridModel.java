@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.antilia.common.util.StringUtils;
+import com.antilia.struts2.jquery.utils.StringUtils;
 
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)
