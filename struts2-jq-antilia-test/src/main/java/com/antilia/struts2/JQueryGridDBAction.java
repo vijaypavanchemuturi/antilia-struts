@@ -94,7 +94,7 @@ public abstract class JQueryGridDBAction extends ExampleSupport {
 				System.exit(-1);
 			} 
 			
-			ProviderNavigator<Country> navigator = new ProviderNavigator<Country>(new CountriesProvider(), gridModel);				
+			ProviderNavigator<Country> navigator = new ProviderNavigator<Country>(new CountriesProvider(), gridModel, new Country());
 			navigator.renderData();
 		} catch (Exception e) {
 			e.printStackTrace();
