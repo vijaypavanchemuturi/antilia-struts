@@ -4,7 +4,7 @@
 package com.antilia.struts2.data;
 
 import com.antilia.struts2.entities.Country;
-import com.antilia.struts2.jquery.provider.QuerableDaoProvider;
+import com.antilia.struts2.provider.QuerableDaoProvider;
 
 /**
  * @author Ernesto Reinaldo Barreiro (reirn70@gmail.com)

@@ -64,7 +64,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mx4j-tools-3.0.1.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ognl-2.6.11.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-test-2.5.6.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/struts2-jq-antilia.1.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/velocity-1.4.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/velocity-tools-view-1.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xercesImpl-2.6.2.jar"/>
