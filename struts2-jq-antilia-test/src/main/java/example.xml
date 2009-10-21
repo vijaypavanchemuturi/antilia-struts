@@ -26,6 +26,9 @@
         <action name="XMLDataDB" method="getData" class="com.antilia.struts2.JQueryGridDBXMLAction">            
         </action>
         
+        <action name="SearchDataDB" method="getData" class="com.antilia.struts2.JQueryGridDBXMLAction">            
+        </action>        
+        
         <action name="JQueryGridDBJSONAction"  class="com.antilia.struts2.JQueryGridDBJSONAction">            
         	<result>/struts2/example/AntiliaJQueryDBJSON.jsp</result>
         </action>
@@ -36,6 +39,10 @@
         <action name="JQGridInPanel"  class="com.antilia.struts2.JQueryGridAction">            
         	<result>/struts2/example/JQGridInPanel.jsp</result>
         </action>
+                
+         <action name="SearchCountry"  class="com.antilia.struts2.JQueryGridDBXMLAction">            
+        	<result>/struts2/example/Search.jsp</result>
+       	 </action>
         
     </package>
 </struts>

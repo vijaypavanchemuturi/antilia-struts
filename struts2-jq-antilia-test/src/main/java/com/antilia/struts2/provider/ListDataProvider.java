@@ -39,7 +39,7 @@ public class ListDataProvider<B extends Serializable> implements IDataProvider<B
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Iterable<? extends B> getData(int start, int size, B searchBean, SortInfo sortInfo) {
+	public Iterable<? extends B> getData(int start, int size, B searchBean, SortInfo sortInfo, String... searchFields) {
 		IQuery<B> query = new Query<B>((Class<B>) searchBean.getClass());
 		if(sortInfo != null) {
 			IOrder<B> order = Order.des(sortInfo.getProperty());
@@ -55,7 +55,7 @@ public class ListDataProvider<B extends Serializable> implements IDataProvider<B
 	};
 	
 	@SuppressWarnings("unchecked")
-	public int getSize(B searchBean, SortInfo sortInfo) {
+	public int getSize(B searchBean, SortInfo sortInfo, String... searchFields) {
 		IQuery<B> query = new Query<B>((Class<B>) searchBean.getClass());
 		if(sortInfo != null) {
 			IOrder<B> order = Order.des(sortInfo.getProperty());
