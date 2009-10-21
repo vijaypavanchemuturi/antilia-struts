@@ -41,12 +41,12 @@ public abstract class JQueryGridDBAction extends ExampleSupport {
 	public String execute() throws Exception {    	   
     	setRequest_locale((String)ServletActionContext.getRequest().getParameter("request_locale"));
         setMessage(getText(MESSAGE));                
-        innitModel();
+        initModel();
 
         return SUCCESS;
     }
 	
-	private void innitModel() {
+	private void initModel() {
 		gridModel = new GridModel<Country>(Country.class);
 		gridModel.setCaption("Countries");
 		// transfer protocol will determine how the tag communicates with the back end.
@@ -88,7 +88,7 @@ public abstract class JQueryGridDBAction extends ExampleSupport {
 			requestContext.setPersistenceUnit(persistenceUnit);		
 			requestContext.setUser("test");
 			
-			innitModel();
+			initModel();
 			
 			try {
 				InsertData.checkData();
