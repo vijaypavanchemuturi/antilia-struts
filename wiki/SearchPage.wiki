@@ -199,5 +199,14 @@ public interface IDataProvider<B extends Serializable> extends Serializable {
 }
 }}}
 
+CountriesProvider is just an implementation of the interfaces that uses Hibernate to retrieve data.
+
+== The result ==
+
+http://antilia-struts.googlecode.com/svn/wiki/Search1.jpg
+
+and
+
+http://antilia-struts.googlecode.com/svn/wiki/Search2.jpg
 
 
