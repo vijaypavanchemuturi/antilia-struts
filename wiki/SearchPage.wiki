@@ -10,6 +10,9 @@ The JSP just contains:
   * a button that will collect form values and repaint the grid clicked
   * and the grid itself
 
+The grid uses  the action (XMLDataDB.action) to get the drid's data as well as an object
+(gridModel) defining properties about the grid.
+
 {{{
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
@@ -62,6 +65,18 @@ function gridReload(){
 
 <antsj:grid id="list1" url="XMLDataDB.action" gridModel="gridModel"/>
 
+=== The action ===
+
+The importnat actions are defined at the example.xml file. Name
+
+{{{
+ <action name="XMLDataDB" method="getData" class="com.antilia.struts2.JQueryGridDBXMLAction">            
+ </action>
+
+ <action name="SearchCountry"  class="com.antilia.struts2.JQueryGridDBXMLAction">            
+	<result>/struts2/example/Search.jsp</result>
+ </action>
+}}}
 
 
 </body>
