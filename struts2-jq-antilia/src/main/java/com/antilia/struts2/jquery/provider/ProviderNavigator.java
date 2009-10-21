@@ -36,15 +36,18 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 	
 	private SortInfo sortInfo;
 	
+	private String[] searchFields;
+	
 	/**
 	 * 
 	 * @param dataProvider
 	 * @param columnModel
 	 */
-	public ProviderNavigator(IDataProvider<B> dataProvider, GridModel<B> gridModel, B searchBean) {
+	public ProviderNavigator(IDataProvider<B> dataProvider, GridModel<B> gridModel, B searchBean, String... searchFields) {
 		this.dataProvider = dataProvider;
 		this.gridModel = gridModel;
 		this.searchBean = searchBean;		
+		this.searchFields = searchFields;
 	}
 	
 	
@@ -94,7 +97,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		PrintWriter writer = response.getWriter(); 
 		int rows = getNumberOfRows(request);
 		int page = getCurrentPage(request);
-		int records = totalRecords(getSearchBean(), this.sortInfo);
+		int records = totalRecords(getSearchBean(), this.sortInfo, getSearchFields());
 		int start = rows*(page-1);
 		int totalPages = (records/rows)+1;
 		writer.print("{\"page\":\"");
@@ -106,7 +109,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		writer.print("\",");
 		writer.print("\"rows\":[");
 		int row = 1;
-		Iterator<? extends B> it = getRows(start, rows, getSearchBean(), sortInfo).iterator();
+		Iterator<? extends B> it = getRows(start, rows, getSearchBean(), sortInfo, getSearchFields()).iterator();
 		while(it.hasNext()) {
 			B bean = it.next();
 			writer.print("{");
@@ -147,7 +150,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		PrintWriter writer = response.getWriter();
 		int rows = getNumberOfRows(request);
 		int page = getCurrentPage(request);
-		int records = totalRecords(getSearchBean(),this.sortInfo);
+		int records = totalRecords(getSearchBean(),this.sortInfo, getSearchFields());
 		int start = rows*(page-1);
 		int totalPages = (records/rows)+1;
 		writer.println("<?xml version='1.0' encoding='utf-8'?>");
@@ -162,7 +165,7 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		writer.print(records);;		
 		writer.println("</records>");		
 		int row = 1;
-		for(B bean: getRows(start, rows, getSearchBean(), sortInfo)) {
+		for(B bean: getRows(start, rows, getSearchBean(), sortInfo, getSearchFields())) {
 			writer.print("<row id=\"");
 			writer.print("row"+row);
 			writer.println("\">");
@@ -193,12 +196,12 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 		return "";
 	}	
 	
-	private Iterable<? extends B> getRows(int start, int rows, B searchBean, SortInfo sortInfo) {
-		return this.dataProvider.getData(start, rows, searchBean, sortInfo);
+	private Iterable<? extends B> getRows(int start, int rows, B searchBean, SortInfo sortInfo, String[] searchFields) {
+		return this.dataProvider.getData(start, rows, searchBean, sortInfo, searchFields);
 	}
 	
-	private int totalRecords(B searchBean, SortInfo sortInfo) {
-		return this.dataProvider.getSize(searchBean, sortInfo);
+	private int totalRecords(B searchBean, SortInfo sortInfo, String[] searchFields) {
+		return this.dataProvider.getSize(searchBean, sortInfo, searchFields);
 	}
 	
 	private int getCurrentPage(HttpServletRequest request) {
@@ -242,5 +245,15 @@ public  class ProviderNavigator<B extends Serializable> implements Serializable 
 
 	public void setSearchBean(B searchBean) {
 		this.searchBean = searchBean;
+	}
+
+
+	public String[] getSearchFields() {
+		return searchFields;
+	}
+
+
+	public void setSearchFields(String[] searchFields) {
+		this.searchFields = searchFields;
 	}		
 }
