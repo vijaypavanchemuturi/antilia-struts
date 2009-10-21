@@ -203,10 +203,10 @@ CountriesProvider is just an implementation of the interfaces that uses Hibernat
 
 == The result ==
 
-http://antilia-struts.googlecode.com/svn/wiki/Search1.jpg
+http://antilia-struts.googlecode.com/svn/wiki/Search1.JPG
 
 and
 
-http://antilia-struts.googlecode.com/svn/wiki/Search2.jpg
+http://antilia-struts.googlecode.com/svn/wiki/Search2.JPG
 
 
