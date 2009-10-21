@@ -64,6 +64,9 @@ function gridReload(){
 <button onclick="gridReload();"  id="submitButton">Search</button>
 
 <antsj:grid id="list1" url="XMLDataDB.action" gridModel="gridModel"/>
+</body>
+</html>
+
 }}}
 
 === The action ===
@@ -80,6 +83,3 @@ The importnat actions are defined at the example.xml file. Name
 }}}
 
 
-</body>
-</html>
-}}}
