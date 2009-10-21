@@ -2,6 +2,14 @@
 
 = The code =
 
+=== Search.jsp ===
+
+The JSP just contains:
+ 
+  * two search text field
+  * a button that will collect form values and repaint the grid clicked
+  * and the grid itself
+
 {{{
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
