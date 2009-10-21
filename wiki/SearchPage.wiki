@@ -64,6 +64,7 @@ function gridReload(){
 <button onclick="gridReload();"  id="submitButton">Search</button>
 
 <antsj:grid id="list1" url="XMLDataDB.action" gridModel="gridModel"/>
+}}}
 
 === The action ===
 
