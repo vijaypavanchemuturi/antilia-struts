@@ -71,7 +71,7 @@ function gridReload(){
 
 === The action ===
 
-The importnat actions are defined at the example.xml file. Name
+The relevant actions are defined at the example.xml file. Namely
 
 {{{
  <action name="XMLDataDB" method="getData" class="com.antilia.struts2.JQueryGridDBXMLAction">            
@@ -81,5 +81,59 @@ The importnat actions are defined at the example.xml file. Name
 	<result>/struts2/example/Search.jsp</result>
  </action>
 }}}
+
+The relevant parts of of JQueryGridDBXMLAction (or the class JQueryGridDBAction from which the former inherits) 
+are the following.
+
+{{{
+	private GridModel<Country>  gridModel;
+  
+    private String name;
+    
+    private String domain;
+	
+	public String execute() throws Exception {    	   
+    	setRequest_locale((String)ServletActionContext.getRequest().getParameter("request_locale"));
+        setMessage(getText(MESSAGE));                
+        initModel();
+
+        return SUCCESS;
+    }
+	
+	private void initModel() {
+		gridModel = new GridModel<Country>(Country.class);
+		gridModel.setCaption("Countries");
+		// transfer protocol will determine how the tag communicates with the back end.
+		gridModel.setTransferProtocol(getTransferProtocol());
+		gridModel.setAutowidth(true);
+		gridModel.setShrinkToFit(false);
+		gridModel.setRownumbers(true);
+		gridModel.setHidegrid(false);
+		gridModel.setMultiselect(true);
+		gridModel.setSortOrder(SortOrder.asc);
+		GridColumnModel<Country> columnModel = new GridColumnModel<Country>("name", 100);
+        columnModel.setInitialSort(true);
+        columnModel.setCellRenderer(new IGridCellRenderer<Country>() {
+        	private static final long serialVersionUID = 1L;
+
+			public String renderCell(Country bean, String propertyPath, int column, int row) {
+        		return "<span style=\"color: red;\">"+bean.getName()+"</span>";
+        	}
+        });
+        gridModel.addColumnModel(columnModel);
+        
+        columnModel = new GridColumnModel<Country>("id", 100);
+        columnModel.setSortable(false);
+        columnModel.setResizable(false);
+        gridModel.addColumnModel(columnModel);
+        
+        columnModel = new GridColumnModel<Country>("domain", 200);
+        gridModel.addColumnModel(columnModel);
+               
+	}
+}}}
+
+On the initModel() we initialize the GridModel which will define the look and feel properties of the table. This object 
+will be used by the grid tag to generate appropriate JQuery Grid.
 
 
