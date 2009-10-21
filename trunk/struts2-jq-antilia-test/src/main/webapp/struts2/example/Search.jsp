@@ -45,7 +45,7 @@ function gridReload(){
 	</tbody>
 </table>
 
-<a href="#" onclick="gridReload();"  id="submitButton">Search</a>
+<button onclick="gridReload();"  id="submitButton">Search</button>
 
 <antsj:grid id="list1" url="XMLDataDB.action" gridModel="gridModel"/>
 
