@@ -22,13 +22,13 @@ public interface IDataProvider<B extends Serializable> extends Serializable {
 	 * @param sortInfo
 	 * @return
 	 */
-	Iterable<? extends B> getData(int start, int size,  B searchBean, SortInfo sortInfo);
+	Iterable<? extends B> getData(int start, int size,  B searchBean, SortInfo sortInfo, String... searchFields);
 	
 	/**
 	 * 
 	 * @return returns the number of records.
 	 */
-	int getSize(B searchBean, SortInfo sortInfo); 
+	int getSize(B searchBean, SortInfo sortInfo, String... searchFields); 
 	
 	
 	/**
