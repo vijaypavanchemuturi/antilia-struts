@@ -136,7 +136,7 @@ are the following.
 On the initModel() we initialize the GridModel which will define the look and feel properties of the table. This object 
 will be used by the grid tag to generate appropriate JQuery Grid (columns, which columns are sortable, etc).
 
-Once the grid is rendered it will generate a Query to the the same action asking for data. This is handle by the method 
+Once the grid is rendered it will generate a HTTP request to the the same action: asking for data. This is handle by the method 
 
 {{{
      public String getData() throws Exception {
@@ -159,5 +159,45 @@ Once the grid is rendered it will generate a Query to the the same action asking
 		return null;
 	}
 }}}
+
+The ProviderNavigator is an utility class that will generate all the data needed by the GRID (either on XML or JSON) based on
+the given model and an instance of the interface:
+
+{{{
+public interface IDataProvider<B extends Serializable> extends Serializable {
+		
+	/**
+	 * Returns an Iterable over the records starting at first and ending at first+size.
+	 * 
+	 * @param start first record to return
+	 * @param size number of records to return
+	 * @param searchBean Bean to be used for filtering the results.
+	 * @param sortInfo  which column should be used for ordering data.
+	 * @param searchFields Which fields of the seacrBean should be used to filter data.
+	 * @return
+	 */
+	Iterable<? extends B> getData(int start, int size,  B searchBean, SortInfo sortInfo, String... searchFields);
+	
+	/**
+	 * Returns the number of records.
+	 * 
+	 * @param searchBean Bean to be used for filtering the results
+	 * @param sortInfo which column should be used for ordering data.
+	 * @param searchFields Which fields of the seacrBean should be used to filter data.
+	 * @return Returns the number of records.
+	 */
+	int getSize(B searchBean, SortInfo sortInfo, String... searchFields); 
+	
+	
+	/**
+	 * Can be used to detach any heavy resources that where created while
+	 * finding the data produced by the query. Detach will always be called  
+	 * after getData() and getSize() methods have been both executed.
+	 */
+	void detach();
+
+}
+}}}
+
 
 
