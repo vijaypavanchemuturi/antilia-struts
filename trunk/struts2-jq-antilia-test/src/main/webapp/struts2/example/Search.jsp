@@ -13,7 +13,7 @@
 </s:url>
 <s:a href="%{url}">Back to examples</s:a>
        
-<h2>Search Contries</h2>
+<h2>Search Countries</h2>
 
 <script type="text/javascript">
 function doSearch(ev){
