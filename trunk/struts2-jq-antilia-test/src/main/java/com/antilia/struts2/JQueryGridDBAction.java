@@ -34,7 +34,10 @@ public abstract class JQueryGridDBAction extends ExampleSupport {
 	
 	private GridModel<Country>  gridModel;
   
-     
+    private String name;
+    
+    private String domain;
+	
 	public String execute() throws Exception {    	   
     	setRequest_locale((String)ServletActionContext.getRequest().getParameter("request_locale"));
         setMessage(getText(MESSAGE));                
@@ -94,7 +97,10 @@ public abstract class JQueryGridDBAction extends ExampleSupport {
 				System.exit(-1);
 			} 
 			
-			ProviderNavigator<Country> navigator = new ProviderNavigator<Country>(new CountriesProvider(), gridModel, new Country());
+			Country country = new Country();
+			country.setName(getName());
+			country.setDomain(getDomain());
+			ProviderNavigator<Country> navigator = new ProviderNavigator<Country>(new CountriesProvider(), gridModel, country, "name", "domain");
 			navigator.renderData();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,5 +174,21 @@ public abstract class JQueryGridDBAction extends ExampleSupport {
 	 */
 	public void setGridModel(GridModel<Country> gridModel) {
 		this.gridModel = gridModel;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDomain() {
+		return domain;
+	}
+
+	public void setDomain(String domain) {
+		this.domain = domain;
 	}
 }

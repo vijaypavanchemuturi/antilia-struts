@@ -31,6 +31,7 @@
 	<li><a href="/struts2/example/JQueryGridDBXMLAction">JQuery based GRID (accessing a database, communication with server via XML)</a></li>	
 	<li><a href="/struts2/example/JQueryGridDBJSONAction">JQuery based GRID (accessing a database, communication with server via JSON)</a></li>
 	<li><a href="/struts2/example/JQGridInPanel">JQuery based GRID in a floating panel</a></li>	
+	<li><a href="/struts2/example/SearchCountry">SearchScreen</a></li>
 </ul>
 </body>
 </html>
