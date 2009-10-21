@@ -134,6 +134,30 @@ are the following.
 }}}
 
 On the initModel() we initialize the GridModel which will define the look and feel properties of the table. This object 
-will be used by the grid tag to generate appropriate JQuery Grid.
+will be used by the grid tag to generate appropriate JQuery Grid (columns, which columns are sortable, etc).
+
+Once the grid is rendered it will generate a Query to the the same action asking for data. This is handle by the method 
+
+{{{
+     public String getData() throws Exception {
+		.....	
+		try {
+			.....		
+			initModel();
+			
+			.....
+			
+			Country country = new Country();
+			country.setName(getName());
+			country.setDomain(getDomain());
+			ProviderNavigator<Country> navigator = new ProviderNavigator<Country>(new CountriesProvider(), gridModel, country, "name", "domain");
+			navigator.renderData();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		..... 
+		return null;
+	}
+}}}
 
 
